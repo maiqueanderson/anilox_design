@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap');
+
+.hero_text{
+    font-family: Roboto;
+    font-weight: 100;
+    font-size: 3rem;
+    margin: 0;
+    line-height: 3.5rem;
+}
+
+.hero_text__under{
+    font-family: Roboto;
+    font-weight: 400;
+    font-size: 3rem;
+    margin: 0;
+    color: #71619d;
+    line-height: 3.5rem;
+}
+
+.hero_button{
+    background-color: #71619d;
+    width: 10rem;
+    margin: 0 10px;
+}
+
+.paragrafo{
+    margin: -10px;
+    max-width: 28.75rem;
+}
