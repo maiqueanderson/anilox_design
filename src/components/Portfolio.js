@@ -16,7 +16,7 @@ const Portfolio = () =>{
     return(
         <section className="portfolio_countent">
            
-                <Row xs={12}>
+                <Row className="mx-0" >
                     <Col>
                     <Image className="d-lg-none my-5 port_image_m" src={cheiro} />
                     <Image className="d-none d-lg-inline-block port_image" src={cheiro} />
@@ -38,7 +38,7 @@ const Portfolio = () =>{
                     </Col>
                 </Row>
 
-                <Row xs={12}>
+                <Row className="mx-0">
                     <Col>
                     <Image className="d-lg-none my-5 port_image_m" src={nalaje} />
                     <Image className="d-none d-lg-inline-block port_image" src={nalaje} />
