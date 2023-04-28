@@ -1,0 +1,20 @@
+.portfolio_countent{
+    background-color: #f6f6f6;
+    min-height: 720px;
+}
+
+.port_image{
+   margin: auto;
+   transition: transform 1s;
+   transform: translateX(0) scale(1);
+   
+}
+
+.port_image:hover{
+    transform: translateX(10px) scale(1.2);
+ }
+
+.port_image_m{
+    margin: 0 10vw;
+    max-width: 70vw;
+}
