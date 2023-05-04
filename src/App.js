@@ -1,5 +1,8 @@
 
 import './App.css';
+import Brands from './components/Brands';
+import Client from './components/Client';
+import Faq from './components/Faq';
 import Navigation from './components/Navigation';
 import Portfolio from './components/Portfolio';
 import Quote from './components/Quote';
@@ -14,6 +17,9 @@ function App() {
       <Quote />
       <Services />
       <Portfolio />
+      <Brands />
+      <Client />
+      <Faq />
    </div>
   );
 }

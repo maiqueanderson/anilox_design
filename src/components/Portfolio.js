@@ -1,5 +1,5 @@
 import React from "react";
-import { Col, Container, Row, Image } from "react-bootstrap";
+import { Col, Row, Image } from "react-bootstrap";
 
 import './portfolio.css'
 import cheiro from '../assets/cheiro-de-pizza-100.jpg';

@@ -1,14 +1,14 @@
 import React from "react";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCalendar } from '@fortawesome/free-solid-svg-icons'
+import { faArrowsRotate, faBox, faCalendarAlt, faCloud, faFileExport, faLightbulb, faObjectUngroup, faPenRuler, faTachographDigital } from '@fortawesome/free-solid-svg-icons'
 import './services.css';
 
 const Services = () => {
   return (
     <Container>
       <Row>
-        <Col>
+        <Col className="my-5 py-5">
           <Row className="services_text">Com a Anilox Design</Row>
 
           <Row className="services_text">sua empresa tem</Row>
@@ -21,71 +21,71 @@ const Services = () => {
         </Col>
         
         <Col>
-          <Row>
-            <Col>
-                <div className="services_space">
-                <span><FontAwesomeIcon icon={faCalendar} size="2xl" style={{color: "#b080b0",}} /></span>
-                    <span>Artes entregues em até 24h</span>
+          <Row className="linha">
+            <Col xs={12} lg={4} className="">
+                <div className="services_space mx-5 mx-lg-0">
+                <span className="m-3"><FontAwesomeIcon icon={faCalendarAlt} size="2xl" style={{color: "#b080b0",}} /></span>
+                    <span className="p-3">Artes entregues em até 48h</span>
                 </div>
             </Col>
 
-            <Col>
-            <div className="services_space">
-                    <span><FontAwesomeIcon icon={faCalendar} size="2xl" style={{color: "#b080b0",}} /></span>
-                    <span>Alterações ilimitadas</span>
+            <Col xs={12} lg={4}>
+            <div className="services_space mx-5 mx-lg-0">
+                    <span className="m-3"><FontAwesomeIcon icon={faArrowsRotate} size="2xl" style={{color: "#b080b0",}} /></span>
+                    <span className="p-3">Alterações ilimitadas</span>
                 </div>
             </Col>
 
-            <Col>
-            <div className="services_space">
-                    <span><FontAwesomeIcon icon={faCalendar} size="2xl" style={{color: "#b080b0",}} /></span>
-                    <span>Arte técnica para flexográfia</span>
+            <Col xs={12} lg={4}>
+            <div className="services_space mx-5 mx-lg-0">
+                    <span className="m-3"><FontAwesomeIcon icon={faPenRuler} size="2xl" style={{color: "#b080b0",}} /></span>
+                    <span className="p-3">Arte técnica para flexográfia</span>
                 </div>
             </Col>
           </Row>
 
-          <Row>
-            <Col>
-            <div className="services_space">
-                    <span><FontAwesomeIcon icon={faCalendar} size="2xl" style={{color: "#b080b0",}} /></span>
-                    <span>Ideias criativas</span>
+          <Row className="linha ">
+            <Col xs={12} lg={4}>
+            <div className="services_space mx-5 mx-lg-0">
+                    <span className="m-3"><FontAwesomeIcon icon={faLightbulb} size="2xl" style={{color: "#b080b0",}} /></span>
+                    <span className="p-3">Ideias criativas</span>
+                </div>
+            </Col >
+
+            <Col xs={12} lg={4}>
+            <div className="services_space mx-5 mx-lg-0">
+                    <span className="m-3"><FontAwesomeIcon icon={faBox} size="2xl" style={{color: "#b080b0",}} /></span>
+                    <span className="p-3">Mockup em 3D para seus clientes</span>
                 </div>
             </Col>
 
-            <Col>
-            <div className="services_space">
-                    <span><FontAwesomeIcon icon={faCalendar} size="2xl" style={{color: "#b080b0",}} /></span>
-                    <span>Mockup em 3D para seus clientes</span>
-                </div>
-            </Col>
-
-            <Col>
-            <div className="services_space">
-                    <span><FontAwesomeIcon icon={faCalendar} size="2xl" style={{color: "#b080b0",}} /></span>
-                    <span>Arquivos em alta definição</span>
+            <Col xs={12} lg={4}>
+            <div className="services_space mx-5 mx-lg-0">
+                    <span className="m-3"><FontAwesomeIcon icon={faTachographDigital} size="2xl" style={{color: "#b080b0",}} /></span>
+                    <span className="p-3">Ficha de impressão digital</span>
                 </div>
             </Col>
 
           </Row>
-          <Row>
-            <Col>
-            <div className="services_space">
-                    <span><FontAwesomeIcon icon={faCalendar} size="2xl" style={{color: "#b080b0",}} /></span>
-                    <span>Fechamento de arquivos</span>
+          <Row className="linha mb-5">
+            <Col xs={12} lg={4}>
+            <div className="services_space mx-5 mx-lg-0">
+                    <span className="m-3"><FontAwesomeIcon icon={faObjectUngroup} size="2xl" style={{color: "#b080b0",}} /></span>
+                    <span className="p-3">Fechamento de arquivos</span>
                 </div>
             </Col>
 
-            <Col>
-            <div className="services_space">
-                    <span><FontAwesomeIcon icon={faCalendar} size="2xl" style={{color: "#b080b0",}} /></span>
-                    <span>Envio de artes prontas para a clicheria</span>
+            <Col xs={12} lg={4}>
+            <div className="services_space mx-5 mx-lg-0">
+                    <span className="m-3"><FontAwesomeIcon icon={faFileExport} size="2xl" style={{color: "#b080b0",}} /></span>
+                    <span className="p-3">Envio de artes para a clicheria</span>
                 </div>
             </Col>
 
-            <Col>
-            <div className="services_space">
-                    <span><FontAwesomeIcon icon={faCalendar} size="2xl" style={{color: "#b080b0",}} /></span>
-                    <span>Atendimento por WhatsApp</span>
+            <Col xs={12} lg={4}>
+            <div className="services_space mx-5 mx-lg-0 mb-5 mb-lg-0">
+                    <span className="m-3"><FontAwesomeIcon icon={faCloud} size="2xl" style={{color: "#b080b0",}} /></span>
+                    <span className="p-3">Todos os arquivos na nuvem</span>
                 </div>
             </Col>
           </Row>

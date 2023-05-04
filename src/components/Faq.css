@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap');
+
+.faq_text{
+
+    font-family: Roboto;
+    font-weight: 700;
+    font-size: 2rem;
+    color: #71619d;;
+    margin: 0 5vw;;
+    line-height: 3.5rem;
+    @media screen and (min-width: 992px) {
+        margin: 0;
+}}
+
+.faq{
+    --bs-accordion-bg: unset;
+    --bs-accordion-active-bg: #71619d;
+    --bs-accordion-active-color: #fff;
+    --bs-accordion-border-color: #71619d;
+    --bs-accordion-btn-active-icon: #fff;
+    
+}

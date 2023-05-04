@@ -4,27 +4,39 @@
     font-family: Roboto;
     font-weight: 100;
     font-size: 3rem;
-    margin: 0;
+    margin: 0 5vw;;
     line-height: 3.5rem;
+    @media screen and (min-width: 992px) {
+        margin: 0;
+    }
 }
 
 .services_text_under{
     font-family: Roboto;
     font-weight: 400;
     font-size: 3rem;
-    margin: 0;
+    margin: 0 5vw;
     color: #71619d;
     line-height: 3.5rem;
+
+    @media screen and (min-width: 992px) {
+        margin: 0;
+    }
 
 }
 
 .services_button{
     background-color: #71619d;
     width: 12rem;
-    margin: 20px 10px;
+    margin: 20px 8vw;
+    @media screen and (min-width: 992px) {
+        margin: 1.25rem 0.625rem;;
+    }
 }
 
 .services_space{
+    font-family: Roboto;
+    font-weight: 300;
     width: 11.5625rem;
     height: 9.5rem;
     background-color: #f2f2f2;
@@ -32,4 +44,23 @@
     margin: 1.25rem 0;
     display: grid;
     grid-template-columns: auto;
+    @media screen and (min-width: 992px) {
+        transition: transform 1s;
+        transform: translateX(0) scale(1);
+    }
+    
+}
+
+.services_space:hover{
+    @media screen and (min-width: 992px) {
+        transform: translateX(10px) scale(1.2);
+    }
+}
+
+.linha{
+    margin: 0 5vw;
+    @media screen and (min-width: 992px) {
+        margin: 0;
+    }
+    
 }
