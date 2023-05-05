@@ -22,7 +22,7 @@ const Brands = () => {
 
         <Row className="my-5 text-light mx-5" >
           <Col xs={12} lg={3} className="px-5 px-lg-0 mb-5 mb-lg-0 ">
-            <div>
+            <div className="marca">
               <Image src={fabrica} />
               <p className="brand_text">
                 Criação de todas as artes dos clientes da Fábrica de Caixa desde
@@ -32,7 +32,7 @@ const Brands = () => {
           </Col>
 
           <Col xs={12} lg={3} className="px-5 px-lg-0 mb-5 mb-lg-0 ">
-            <div>
+            <div className="marca">
               <Image src={nevada} />
               <p className="brand_text">
               Criação de todas as artes
@@ -43,10 +43,10 @@ de 2016 até 2018
           </Col>
 
           <Col xs={12} lg={3} className="px-5 px-lg-0 mb-5 mb-lg-0">
-            <div>
+            <div className="marca">
               <Image src={delinear} />
               <p className="brand_text">
-              Criação as artes e fechamento
+              Criação das artes e fechamento
 de arquivos da Delinear Bahia
 em 2018
               </p>
@@ -54,7 +54,7 @@ em 2018
           </Col>
 
           <Col xs={12} lg={3} className="px-5 px-lg-0 mb-5 mb-lg-0">
-            <div>
+            <div className="marca">
               <Image src={ekobom} />
               <p className="brand_text">
               Criação da arte das embalagens de
@@ -67,7 +67,7 @@ grupo Atakarejo
 
         <Row className="my-5 text-light mx-5 pb-5" >
           <Col xs={12} lg={3} className="px-5 px-lg-0 mb-5 mb-lg-0">
-            <div>
+            <div className="marca">
               <Image src={pastel} />
               <p className="brand_text">
               Criação de todas as artes das
@@ -78,7 +78,7 @@ da Mais Pastel
           </Col>
 
           <Col xs={12} lg={3} className="px-5 px-lg-0 mb-5">
-            <div>
+            <div className="marca">
               <Image src={induslab} />
               <p className="brand_text">
               Criação de todas as artes das
@@ -89,7 +89,7 @@ da Induslab
           </Col>
 
           <Col xs={12} lg={3} className="px-5 px-lg-0 mb-5">
-            <div>
+            <div className="marca">
               <Image src={cheiro} />
               <p className="brand_text">
               Criação de todas as artes das
@@ -100,7 +100,7 @@ da Cheiro de Pizza
           </Col>
 
           <Col xs={12} lg={3} className="px-5 px-lg-0 mb-5">
-            <div>
+            <div className="marca">
               <Image src={flexo} />
               <p className="brand_text">
               Colaboração no fechamento

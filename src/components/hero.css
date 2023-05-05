@@ -27,3 +27,22 @@
     margin: -10px;
     max-width: 28.75rem;
 }
+
+.heroImage{
+    max-width: 300px;
+    animation: go-back 1s;
+
+    @media screen and (min-width: 992px) {
+        max-width: 600px;
+        
+        } 
+}
+
+@keyframes go-back {
+    from {
+      transform: translateY(200px);
+    }
+    to {
+      transform: translateY(0);
+    }
+  } 

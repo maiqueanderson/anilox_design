@@ -1,25 +1,27 @@
 
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
-import Brands from './components/Brands';
-import Client from './components/Client';
-import Faq from './components/Faq';
+
 import Navigation from './components/Navigation';
-import Portfolio from './components/Portfolio';
-import Quote from './components/Quote';
-import Hero from './components/hero';
-import Services from './components/services';
+import Home from './views/Home';
+import Footer from './components/Footer';
+import About from './views/About';
+import Cases from './views/Cases';
+
 
 function App() {
   return (
    <div className='App'>
       <Navigation />
-      <Hero />
-      <Quote />
-      <Services />
-      <Portfolio />
-      <Brands />
-      <Client />
-      <Faq />
+
+      <Routes>
+        <Route path='/' element={<Home/>}></Route>
+        <Route path='/about' element={<About/>}></Route>
+        <Route path='/Cases' element={<Cases/>}></Route>
+      </Routes>
+
+      <Footer/>
+
    </div>
   );
 }

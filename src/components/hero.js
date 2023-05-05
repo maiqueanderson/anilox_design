@@ -1,7 +1,6 @@
 import React from "react";
 import { Col, Container, Row, Image, Button } from "react-bootstrap";
 import vetorDesktop from '../assets/vetor.png';
-import vetor from '../assets/logo-mobile.png';
 import './hero.css';
 
 const Hero = () =>{
@@ -27,8 +26,7 @@ const Hero = () =>{
               </Row>
             </Col>
             <Col>
-            <Image className="d-lg-none my-5" src={vetor} />
-                    <Image className="d-none d-lg-inline-block" src={vetorDesktop} />
+              <Image className="heroImage my-5 my-lg-0" src={vetorDesktop} />
             </Col>
           </Row>
         </Container>

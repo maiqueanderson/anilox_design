@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap');
+
+.abouteQuote_text{
+    font-family: Roboto;
+    font-size: 3rem;
+    font-weight: 100;
+ 
+}
+
+.abouteQuote_text_top{
+    @media screen and (min-width: 992px) {
+        margin: 50px 0 0 0;
+}
+}
+
+.abouteQuote_text_under{
+    font-weight: 700;
+}
+
+.aboutQuote_text_help{
+    font-family: Roboto;
+    font-weight: 700;
+    font-size: 4rem;
+    margin: 0;
+    line-height: 3.8rem;
+}
+
+.aboutQuote_text_help_under{
+    color: #71619d;;
+}
