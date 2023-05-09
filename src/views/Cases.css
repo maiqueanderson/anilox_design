@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap');
+
+.caseText{
+    font-family: Roboto;
+    font-weight: 300;
+    font-size: 3rem;
+    color: #71619d;
+}
+
+.caseImage{
+    transition: transform 1s;
+   transform: translateX(0) scale(1);
+}
+
+.caseImage:hover{
+    transform: translateX(10px) scale(1.1);
+}
