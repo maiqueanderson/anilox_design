@@ -36,6 +36,7 @@ import './Cases.css';
 const Cases = () =>{
     return(
         <div className="my-5">
+            <h1 hidden>Anilox Design flexográfico Portfólio</h1>
             <Container>
             <Row>
                 <h2 className="d-flex justify-content-center my-5 caseText">VEJA NOSSAS ULTIMAS ARTES</h2>

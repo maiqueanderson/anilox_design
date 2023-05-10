@@ -24,7 +24,7 @@ const Navigation = () =>{
             navbarScroll
           >
             <Link className="mx-3 nav_link" to='./About' >Sobre Nós</Link>
-            <Link className="mx-3 nav_link" to='./About' >Serviços</Link>
+            <Link className="mx-3 nav_link" to='./ServicesPage' >Serviços</Link>
             <Link className="mx-3 nav_link" to='./Cases' >Portfólio</Link>
            
           

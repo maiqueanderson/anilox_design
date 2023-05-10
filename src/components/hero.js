@@ -7,6 +7,7 @@ const Hero = () =>{
     return (
      
         <Container>
+          <h1 hidden>Anilox Design flexográfico</h1>
           <Row className="mx-0 my-5">
             <Col>
               <Row className="hero_text">Primeira Empresa</Row>

@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap');
+
+.servicesPage_image{
+    
+    max-width: 300px;
+    animation: go-back 1s;
+
+    @media screen and (min-width: 992px) {
+        max-width: 600px;
+        
+        } 
+}
+
+@keyframes go-back {
+    from {
+      transform: translateY(200px);
+    }
+    to {
+      transform: translateY(0);
+    }
+  } 
+
+  .services_hero_text{
+    font-family: Roboto;
+    font-weight: 700;
+    font-size: 4rem;
+    margin: 0;
+    line-height: 4.5rem;
+}
+
+.services_hero_text_under{
+    color: #71619d;;
+}
+.services_paragrafo{
+    margin: 10px 0;
+    max-width: 28.75rem;
+    font-family: Roboto;
+   
+}
+
+.services_copy{
+    background-color: #71619d;
+    width: 100%;
+}
+
+.services_copy_text{
+    font-family: Roboto;
+    font-weight: 700;
+    font-size: 2rem;
+    color: #fff;
+}
+
+.services_copy p{
+    max-width: 17rem;
+    font-family: Roboto;
+    font-size: 0.7rem;
+}
+
+.service_section{
+    transition: 300ms;
+    padding: 20px;
+    max-width: 300px;
+}
+.service_section:hover{
+    
+    background-color: #554386;
+    border-radius: 10%;
+    padding: 20px;
+    max-width: 300px;
+    transform: scale(1.1);
+    
+}

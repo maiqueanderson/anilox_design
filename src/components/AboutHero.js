@@ -7,6 +7,7 @@ import './AboutHero.css';
 const AboutHero = () =>{
     return(
      <>
+     <h1 hidden>Anilox Design flexográfico Sobre</h1>
          <Container>
           <Row className="mx-0 my-5">
             <Col>

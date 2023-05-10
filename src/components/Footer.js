@@ -23,7 +23,9 @@ const Footer = () => {
             <h3>Links Úteis</h3>
             <Link className="footer" to='./'><h4>Home</h4></Link>
             <Link className="footer" to='./About'><h4>Sobre Nós</h4></Link>
-            <h4>Portfólio</h4>
+            <Link className="footer" to='./Cases'><h4>Portfólio</h4></Link>
+            <Link className="footer" to='./ServicesPage'><h4>Serviços</h4></Link>
+            
           </div>
           </Col>
 
