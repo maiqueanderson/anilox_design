@@ -1,7 +1,6 @@
 import React from "react";
 import "./quote.css";
-import { Col, Container, Row,} from "react-bootstrap";
-
+import { Col, Container, Row } from "react-bootstrap";
 
 const Quote = () => {
   return (
@@ -16,21 +15,23 @@ const Quote = () => {
             </Col>
 
             <Col className="mx-3 p-2">
-              <iframe className="video d-none d-lg-inline-block"
-                width="420"
-                height="226"
-                src="https://www.youtube.com/embed/xBLSp6IZI7g"
-                title="Nós criamos o Seu Logo em 48h - Seulogo.com"
+              <iframe
+                className="video d-none d-lg-inline-block"
+                width="560"
+                height="315"
+                src="https://www.youtube.com/embed/Y_7JoWYBdSI"
+                title="YouTube video player"
                 frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowfullscreen
               ></iframe>
 
-            <iframe className="d-lg-none my-5 "
-                width="290"
-                height="163"
-                src="https://www.youtube.com/embed/xBLSp6IZI7g"
-                title="Nós criamos o Seu Logo em 48h - Seulogo.com"
+              <iframe
+                className="d-lg-none my-5 "
+                width="560"
+                height="315"
+                src="https://www.youtube.com/embed/Y_7JoWYBdSI"
+                title="YouTube video player"
                 frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowfullscreen
