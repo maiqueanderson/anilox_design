@@ -28,8 +28,8 @@ const Quote = () => {
 
               <iframe
                 className="d-lg-none my-5 "
-                width="560"
-                height="315"
+                width="300"
+                height="215"
                 src="https://www.youtube.com/embed/Y_7JoWYBdSI"
                 title="YouTube video player"
                 frameborder="0"

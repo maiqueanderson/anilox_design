@@ -17,10 +17,12 @@ const Brands = () => {
       <Container>
         <Row className="mx-5">
           <h3 className="mt-5 pt-5 mb-0 text-light brand_title">Clientes</h3>
-          <h2 className="text-light brand_title_under">Parceria com grandes marcas</h2>
+          <h2 className="text-light brand_title_under">
+            Parceria com grandes marcas
+          </h2>
         </Row>
 
-        <Row className="my-5 text-light mx-5" >
+        <Row className="my-5 text-light mx-5">
           <Col xs={12} lg={3} className="px-5 px-lg-0 mb-5 mb-lg-0 ">
             <div className="marca">
               <Image src={fabrica} />
@@ -35,9 +37,8 @@ const Brands = () => {
             <div className="marca">
               <Image src={nevada} />
               <p className="brand_text">
-              Criação de todas as artes
-dos clientes do Grupo Nevada
-de 2016 até 2018
+                Criação de todas as artes dos clientes do Grupo Nevada de 2016
+                até 2018
               </p>
             </div>
           </Col>
@@ -46,9 +47,8 @@ de 2016 até 2018
             <div className="marca">
               <Image src={delinear} />
               <p className="brand_text">
-              Criação das artes e fechamento
-de arquivos da Delinear Bahia
-em 2018
+                Criação das artes e fechamento de arquivos da Delinear Bahia em
+                2018
               </p>
             </div>
           </Col>
@@ -57,22 +57,20 @@ em 2018
             <div className="marca">
               <Image src={ekobom} />
               <p className="brand_text">
-              Criação da arte das embalagens de
-papelão da marca Ekobom do
-grupo Atakarejo
+                Criação da arte das embalagens de papelão da marca Ekobom do
+                grupo Atakarejo
               </p>
             </div>
           </Col>
         </Row>
 
-        <Row className="my-5 text-light mx-5 pb-5" >
+        <Row className="my-5 text-light mx-5 pb-5">
           <Col xs={12} lg={3} className="px-5 px-lg-0 mb-5 mb-lg-0">
             <div className="marca">
               <Image src={pastel} />
               <p className="brand_text">
-              Criação de todas as artes das
-embalagens de papelão
-da Mais Pastel
+                Criação de todas as artes das embalagens de papelão da Mais
+                Pastel
               </p>
             </div>
           </Col>
@@ -81,9 +79,7 @@ da Mais Pastel
             <div className="marca">
               <Image src={induslab} />
               <p className="brand_text">
-              Criação de todas as artes das
-embalagens de papelão
-da Induslab
+                Criação de todas as artes das embalagens de papelão da Induslab
               </p>
             </div>
           </Col>
@@ -92,9 +88,8 @@ da Induslab
             <div className="marca">
               <Image src={cheiro} />
               <p className="brand_text">
-              Criação de todas as artes das
-embalagens de papelão
-da Cheiro de Pizza
+                Criação de todas as artes das embalagens de papelão da Cheiro de
+                Pizza
               </p>
             </div>
           </Col>
@@ -103,14 +98,12 @@ da Cheiro de Pizza
             <div className="marca">
               <Image src={flexo} />
               <p className="brand_text">
-              Colaboração no fechamento
-de arquivos para clichês
-da Flexo Premium
+                Colaboração no fechamento de arquivos para clichês da Flexo
+                Premium
               </p>
             </div>
           </Col>
         </Row>
-
       </Container>
     </div>
   );

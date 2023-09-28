@@ -15,3 +15,11 @@
 .caseImage:hover{
     transform: translateX(10px) scale(1.1);
 }
+
+.caseP{
+    font-family: Roboto;
+    font-weight: 300;
+    font-size: 1rem;
+    padding: 0 10vw;
+    
+}
