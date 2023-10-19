@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap');
 
 .quote_image{
-    background-image: url('../assets/paralax.jpg');
+    background-image: url('../../assets/paralax.jpg');
        
         background-attachment: fixed;
         min-height: 500px;

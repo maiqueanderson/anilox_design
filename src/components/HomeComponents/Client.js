@@ -1,7 +1,7 @@
 import React from "react";
 import { Col, Container, Row, Image, Button } from "react-bootstrap";
 
-import imageClient from "../assets/client_happy.jpg";
+import imageClient from "../../assets/client_happy.jpg";
 import "./Client.css";
 
 const Client = () => {

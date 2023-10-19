@@ -32,7 +32,12 @@ const Navigation = () =>{
             
       
           </Nav>
-          <Button variant="outline-dark mx-5">Faça um Orçamento</Button>
+          <Nav>
+          <Link to='/Login'>
+
+          <Button variant="outline-dark mx-5">Área do Cliente</Button>
+          </Link>
+          </Nav>
         </Navbar.Collapse>
       </Container>
     </Navbar>

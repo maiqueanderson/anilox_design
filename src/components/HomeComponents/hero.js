@@ -1,7 +1,7 @@
 import React from "react";
 import { Col, Container, Row, Image, Button } from "react-bootstrap";
-import vetorDesktop from "../assets/vetor.png";
-import "./hero.css";
+import vetorDesktop from "../../assets/vetor.png";
+import "./hero.css"
 
 const Hero = () => {
   return (
