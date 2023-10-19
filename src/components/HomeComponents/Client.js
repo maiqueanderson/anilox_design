@@ -1,7 +1,8 @@
 import React from "react";
-import { Col, Container, Row, Image, Button } from "react-bootstrap";
+import { Col, Container, Row, Image } from "react-bootstrap";
 
 import imageClient from "../../assets/client_happy.jpg";
+import Btn from "../Btn";
 import "./Client.css";
 
 const Client = () => {
@@ -28,9 +29,8 @@ const Client = () => {
               são nossa prioridade.
             </p>
 
-            <Button variant="dark" className="client_button">
-              Vamos Conversar?
-            </Button>
+            <Btn texto='Vamos Conversar?'/>
+           
           </div>
         </Col>
       </Row>

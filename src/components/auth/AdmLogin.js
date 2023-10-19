@@ -3,6 +3,7 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { Form } from "react-bootstrap";
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router-dom';
+import Modal from 'react-bootstrap/Modal';
 
 
 import { app } from "../../database/firebaseconfig";
@@ -11,6 +12,11 @@ const AdmLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const handleSubmit = async () => {
     try {
@@ -21,10 +27,16 @@ const AdmLogin = () => {
       navigate("/Admin");
     } catch (error) {
       console.log("err", error);
+      handleShow();
+      
+     
     }
   };
+  
 
   return (
+    <>
+
     <Form>
     <Form.Group className="mb-3" controlId="formBasicEmail">
       <Form.Label>E-mail</Form.Label>
@@ -39,6 +51,21 @@ const AdmLogin = () => {
       Entrar
     </Button>
   </Form>
+
+  <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Erro ao entrar</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>E-mail ou senha incorreta, por favor tente novamente</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Fechar
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </>
+
+  
   );
 };
 

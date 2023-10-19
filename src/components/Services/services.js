@@ -1,6 +1,7 @@
 import React from "react";
-import { Button, Col, Container, Row } from "react-bootstrap";
+import {  Col, Container, Row } from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Btn from "../Btn";
 import { faArrowsRotate, faBox, faCalendarAlt, faCloud, faFileExport, faLightbulb, faObjectUngroup, faPenRuler, faTachographDigital } from '@fortawesome/free-solid-svg-icons'
 import './services.css';
 
@@ -15,8 +16,8 @@ const Services = () => {
 
           <Row className="services_text_under">MUITO MAIS VANTAGENS</Row>
 
-          <Row>
-            <Button variant="dark" className="services_button">Faça um Orçamento</Button>
+          <Row className="mx-sm-0 mx-3">
+          <Btn texto='Faça um Orçamento'/>
           </Row>
         </Col>
         

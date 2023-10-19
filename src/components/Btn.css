@@ -1,0 +1,8 @@
+.client_button{
+    background-color: #71619d;
+    width: 12rem;
+    margin: 20px 0;
+    @media screen and (min-width: 992px) {
+        margin: 10px 0;
+    }
+}

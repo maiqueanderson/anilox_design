@@ -3,8 +3,10 @@ import { getAuth, onAuthStateChanged, createUserWithEmailAndPassword } from "fir
 import { collection, doc, setDoc } from "firebase/firestore";
 import { useNavigate } from 'react-router-dom';
 import { app, db } from "../database/firebaseconfig";
-import { Form } from "react-bootstrap";
-import Button from 'react-bootstrap/Button';
+import { Container, Form } from "react-bootstrap";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
+import Btn from "../components/Btn";
 
 const Admin = () => {
   const [user, setUser] = useState(null);
@@ -14,6 +16,11 @@ const Admin = () => {
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [credit, setCredit] = useState(0);
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const handleSubmit = async () => {
     const auth = getAuth(app);
@@ -27,6 +34,7 @@ const Admin = () => {
             email,
             credit
           })
+          handleShow();
         } catch (err) {
           console.log('errDoc: ', err);
         }
@@ -58,8 +66,10 @@ const Admin = () => {
   }
 
   return (
-    <div>
-      <h1>Criar Novo Usuario</h1>
+    
+      
+      <Container>
+    <h1>Criar Novo Usuario</h1>
       <Form>
     <Form.Group className="mb-3" controlId="formBasicEmail">
       <Form.Label>E-mail</Form.Label>
@@ -81,12 +91,27 @@ const Admin = () => {
       <Form.Control type="text" placeholder="Creditos do cliente" onChange={e => setCredit(e.target.value)} />
     </Form.Group>
 
-    <Button className="mb-3" variant="primary" type="button" onClick={handleSubmit}>
-      Criar Usuario
-    </Button>
+    <Btn texto='Criar Usuario' onClick={handleSubmit}/>
+
   </Form>
 
-    </div>
+  <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Erro ao entrar</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          E-mail ou senha incorreta, por favor tente novamente
+        </Modal.Body>
+        <Modal.Footer>
+          <Button  variant="secondary" onClick={handleClose}>
+            Fechar
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
+      </Container>
+
+    
   );
 };
 

@@ -1,6 +1,7 @@
 import React from "react";
-import { Col, Container, Row, Image, Button } from "react-bootstrap";
+import { Col, Container, Row, Image } from "react-bootstrap";
 import vetorDesktop from "../../assets/vetor.png";
+import Btn from "../Btn";
 import "./hero.css"
 
 const Hero = () => {
@@ -22,9 +23,9 @@ const Hero = () => {
             </p>
           </Row>
           <Row>
-            <Button variant="dark" className="hero_button">
-              Entre em Contato
-            </Button>
+          <Btn texto='Entre em Contato'/>
+              
+          
           </Row>
         </Col>
         <Col>
