@@ -9,6 +9,7 @@ import Modal from 'react-bootstrap/Modal';
 import { app } from "../../database/firebaseconfig";
 
 const AdmLogin = () => {
+  
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();

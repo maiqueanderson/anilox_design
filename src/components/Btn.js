@@ -1,11 +1,14 @@
 import { Button } from "react-bootstrap"
 import './Btn.css'
 
-const Btn = ({texto, onClick}) =>{
+const Btn = ({texto, onClick, isActive}) =>{
+
+    const buttonClass = isActive ? "client_button active" : "client_button";
+
     return(
-        <Button variant="dark" className="client_button" onClick={onClick}>
+        <Button variant="dark" className={buttonClass} onClick={onClick}  >
               {texto}
-            </Button>
+        </Button>
     )
 }
 

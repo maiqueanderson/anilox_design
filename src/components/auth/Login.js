@@ -24,7 +24,7 @@ const Login = () => {
       console.log(data);
       // Redireciona o usuário para a página de dashboard após o login bem-sucedido
 
-      navigate("/Dashboard");
+      navigate("/ClientArea");
     } catch (error) {
       console.log("err", error);
       handleShow();

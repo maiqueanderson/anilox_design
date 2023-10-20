@@ -1,0 +1,78 @@
+.div1 {
+    
+    
+    
+    background-color: #f2f2f2;
+    padding: 40px; 
+    border-radius: 20px;
+
+    
+    
+  }
+
+  .searchDiv{
+  
+    
+    height: 100px; 
+    background-color: #f2f2f2;
+    padding: 30px; 
+    border-radius: 20px;
+
+
+  }
+
+  .clientName{
+    font-family: Roboto;
+    font-weight: 700;
+    font-size: 30px;
+    color: #71619d;
+  }
+
+  .credits{
+    font-family: Roboto;
+    font-weight: 700;
+    font-size: 30px;
+  }
+
+.color{
+  color: #71619d;
+}
+  .boldFont{
+    font-family: Roboto;
+    font-weight: 700;
+    font-size: 20px;
+    
+
+    @media screen and (min-width: 992px) {
+      font-size: 40px;
+      
+      } 
+  }
+
+  .smallFont{
+    font-family: Roboto;
+    font-size: 15px;
+    
+
+    @media screen and (min-width: 992px) {
+      font-size: 20px;
+      
+      } 
+  }
+
+  .smallFont span{
+    font-size: 12px;
+
+    @media screen and (min-width: 992px) {
+      font-size: 15px;
+      
+      } 
+  }
+
+  .creditButton{
+    width: 12rem;
+    margin: 20px 0;
+    @media screen and (min-width: 992px) {
+        margin: 10px 0;
+    }
+  }

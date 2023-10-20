@@ -81,12 +81,12 @@ const Admin = () => {
       <Form.Control type="password" placeholder="Senha do Cliente" onChange={e => setPassword(e.target.value)} />
     </Form.Group>
 
-    <Form.Group className="mb-3" controlId="formBasicPassword">
+    <Form.Group className="mb-3" controlId="formBasicName">
       <Form.Label>Nome do Cliente</Form.Label>
       <Form.Control type="text" placeholder="Nome do Cliente" onChange={e => setName(e.target.value)} />
     </Form.Group>
 
-    <Form.Group className="mb-3" controlId="formBasicPassword">
+    <Form.Group className="mb-3" controlId="formBasicCredit">
       <Form.Label>Quantidade de creditos</Form.Label>
       <Form.Control type="text" placeholder="Creditos do cliente" onChange={e => setCredit(e.target.value)} />
     </Form.Group>
