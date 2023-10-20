@@ -124,10 +124,10 @@ const Dashboard = () => {
               <Btn texto="Artes Finalizadas" />
             </Row>
             <Row>
-            <Btn texto="Solicitar Arte" />
+            <Btn texto="Solicitar Arte" onClick={handleShow} />
             </Row>
             <Row>
-              <Button className="creditButton" variant="success" size="sm" onClick={handleShow}>Solicitar Créditos</Button>
+              <Button className="creditButton" variant="success" size="sm" >Solicitar Créditos</Button>
             </Row>
             </div>
            
