@@ -2,78 +2,161 @@ import React, { useEffect, useState } from "react";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { app, db } from "../../database/firebaseconfig";
-import { doc, getDoc, collection, addDoc  } from "firebase/firestore";
+import { doc, getDoc, collection, addDoc, updateDoc, getDocs, query, where } from "firebase/firestore";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
-import Modal from 'react-bootstrap/Modal';
+
+import Modal from "react-bootstrap/Modal";
 
 import Btn from "../../components/Btn";
 
-
-import './Dashboard.css'
+import "./Dashboard.css";
 
 const Dashboard = () => {
 
+  //Para selecionar o usuario
   const [user, setUser] = useState(null);
   const [userData, setUserData] = useState(null);
 
+  //para pegar o historico das artes solicitadas
+  const [historico, setHistorico] = useState([]);
+
+
+  //Para trabalhar com o upload do arquivo
+  const storage = getStorage(app);
+  const [message, setMessage] = useState(null);
+
+  //Dados do Formulario de criação de arte
   const [nomeArte, setNomeArte] = useState(null);
   const [briefing, setBriefing] = useState(null);
   const [arquivo, setArquivo] = useState(null);
 
   const navigate = useNavigate();
 
+  //Configurações do Modal
   const [show, setShow] = useState(false);
-
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const handleNomeArte = (text) =>{
-    setNomeArte(text)
-  } 
+  //Para inserir informações digitadas pelo usuario
+  const handleNomeArte = (event) => {
+    const { value } = event.target; 
+    setNomeArte(value); 
+  };
 
-  const handleBriefing = (text) =>{
-    setBriefing(text)
-  } 
+  const handleBriefing = (event) => {
+    const { value } = event.target; 
+    setBriefing(value); 
+  };
 
-  const handleFileUpload = (e) => {
-    const file = e.target.files[0]; // Pega o primeiro arquivo selecionado
+// eslint-disable-next-line 
+  const fetchHistorico = async () => {
+    try {
+      const collectionRef = collection(db, "artes");
+      const querySnapshot = await getDocs(query(collectionRef, where("uid", "==", user.uid)));
   
+      const historicoData = [];
+      querySnapshot.forEach((doc) => {
+        historicoData.push(doc.data());
+      });
+  
+      setHistorico(historicoData);
+    } catch (error) {
+      console.error("Erro ao buscar histórico no Firestore:", error);
+    }
+  };
+  
+
+   // Para pegar o arquivo que o usuario selecionou
+  const handleFileUpload = (e) => {
+   
+    const file = e.target.files[0]; 
+
     if (file) {
-      // Aqui você pode processar o arquivo, enviá-lo para o servidor, etc.
-      setArquivo(file)
+  
+      setArquivo(file);
       console.log("Arquivo selecionado:", file);
     } else {
       console.log("Nenhum arquivo selecionado.");
     }
   };
 
-
-  const handleSaveToFirebase = async () => {
+  const handleCreditUpdate = () => {
+    const credit = parseInt(userData?.credit, 10);
+    const menosCredit = credit - 1;
+  
+    const documentRef = doc(db, "users", user.uid);
+  
+    const novoCredit = menosCredit.toString(); // Converta o novo crédito em uma string
+  
     try {
-      const auth = getAuth();
-      const user = auth.currentUser;
-
-      if (!user) {
-        console.error("Nenhum usuário logado");
-        return;
-      }
-
-      const uid = user.uid;
-
-      const collectionRef = collection(db, "artes"); // Coleção onde os documentos serão criados
-      await addDoc(collectionRef, {
-        uid,
-        nomeArte: nomeArte,
-        briefing: briefing,
-        arquivo: arquivo,
-        date: new Date(),
+      // Atualize o campo de crédito no Firestore
+      updateDoc(documentRef, {
+        credit: novoCredit, // Atualize o campo 'credit' com o novo valor
       });
-    
-      console.log("Valor salvo com sucesso no Firestore!");
+  
+      console.log("Créditos atualizados com sucesso");
     } catch (error) {
-      console.error("Erro ao salvar no Firestore:", error);
+      console.log("Erro ao atualizar créditos:", error);
     }
   };
+  
+
+  // Para salvar no firebase
+  const handleSaveToFirebase = async () => {
+    const userCredits = parseInt(userData?.credit, 10);
+
+    if(userCredits < 1){
+      console.log('Usuario sem créditos');
+      setMessage('Você esta sem créditos por favor solicite novos créditos para continuar');
+
+    }else{
+
+      
+
+      try {
+        const auth = getAuth();
+        const user = auth.currentUser;
+       
+    
+        if (!user) {
+          console.error("Nenhum usuário logado");
+          return;
+        }
+    
+        const uid = user.uid;
+    
+        // Para fazer o upload do arquivo para o Firebase Storage
+        const storageRef = ref(storage, `uploads/${uid}/${arquivo.name}`);
+        await uploadBytes(storageRef, arquivo);
+    
+        //URL do arquivo após o upload
+        const fileUrl = await getDownloadURL(storageRef);
+    
+        const collectionRef = collection(db, "artes"); 
+        await addDoc(collectionRef, {
+          uid,
+          nomeArte: nomeArte,
+          briefing: briefing,
+          arquivoUrl: fileUrl,
+          date: new Date(),
+          status: "Solicitado"
+        });
+    
+        console.log("Valor salvo com sucesso no Firestore!");
+        setMessage('Arte Solicitada com sucesso!')
+        handleCreditUpdate();
+      } catch (error) {
+        console.error("Erro ao salvar no Firestore:", error);
+        setMessage('Erro ao solicitar arte, por favor entre em contato com o suporte')
+      }
+    }
+
+  };
+
+  
+  
 
   useEffect(() => {
     const auth = getAuth(app);
@@ -83,6 +166,7 @@ const Dashboard = () => {
         setUser(user);
         console.log(user);
         const userDocRef = doc(db, "users", user.uid);
+        fetchHistorico();
 
         try {
           const userDocSnapshot = await getDoc(userDocRef);
@@ -101,7 +185,7 @@ const Dashboard = () => {
     });
 
     return () => unsubscribe();
-  }, [navigate]);
+  }, [navigate, fetchHistorico]);
 
   if (!user) {
     return <div>Verificando a autenticação...</div>;
@@ -111,40 +195,34 @@ const Dashboard = () => {
     <Container>
       <Row>
         <Col xs={12} lg={3}>
-         <div className="div1 mb-5">
-
+          <div className="div1 mb-5">
             <Row>Bem vindo</Row>
             <Row className="clientName">{userData?.name}</Row>
             <Row className="credits">{userData?.credit}</Row>
             <Row>Créditos</Row>
             <Row>
-              <Btn texto="Dashboard" isActive={true}/>
+              <Btn texto="Dashboard" isActive={true} />
             </Row>
             <Row>
               <Btn texto="Artes Finalizadas" />
             </Row>
             <Row>
-            <Btn texto="Solicitar Arte" onClick={handleShow} />
+              <Btn texto="Solicitar Arte" onClick={handleShow} />
             </Row>
             <Row>
-              <Button className="creditButton" variant="success" size="sm" >Solicitar Créditos</Button>
+              <Button className="creditButton" variant="success" size="sm">
+                Solicitar Créditos
+              </Button>
             </Row>
-            </div>
-           
-        
+          </div>
         </Col>
 
         <Col xs={12} lg={9}>
           <Row>
             <div className="searchDiv mb-3">
               <Form>
-                <Form.Group  controlId="Search">
-                 
-                  <Form.Control
-                    type="text"
-                    placeholder="Buscar artes"
-                  
-                  />
+                <Form.Group controlId="Search">
+                  <Form.Control type="text" placeholder="Buscar artes" />
                 </Form.Group>
               </Form>
             </div>
@@ -152,68 +230,59 @@ const Dashboard = () => {
 
           <Row className="div1 mb-5">
             <div>
+            
               <Row>
-
                 <Col xs={6} lg={8} className="boldFont">
                   <span className="color">Status da arte</span>
                 </Col>
-                <Col xs={3} lg={2}>
-                  <span className="boldFont">94</span>
-                </Col>
-                <Col xs={3} lg={2}>
-                  <span className="boldFont">23</span>
-                </Col>
-            <Row className="smallFont">
+             
+                
 
-                <Col xs={6} lg={8}>
-                  <span>117</span><span> no total</span>
-                </Col>
-                <Col xs={3} lg={2}>
-                  <span>Finalizadas</span>
-                </Col>
-                <Col xs={3} lg={2}>
-                  <span>Aprovadas</span>
-                </Col>
-            </Row>
+                <Row className="py-3">
+                  <hr></hr>
+                </Row>
 
-            <Row className="py-3">
-              <hr></hr>
-            </Row>
+                <Row className="smallFont">
+                  <Col xs={6} lg={8}>
+                    Nome da Arte
+                  </Col>
+                  <Col xs={3} lg={2}>
+                    Data
+                  </Col>
+                  <Col xs={3} lg={2}>
+                    Status
+                  </Col>
+                </Row>
 
-            <Row className="smallFont">
+                <Row className="py-3">
+                  <hr></hr>
+                </Row>
+
+                
+                 
+
+                  {historico.map((item, index) => (
+          <div key={index}>
+          <Row className="smallFont py-2">
             <Col xs={6} lg={8}>
-                  Nome da Arte
-                </Col>
-                <Col xs={3} lg={2}>
-                  Data
-                </Col>
-                <Col xs={3} lg={2}>
-                  Status
-                </Col>
-            </Row>
+            {item.nomeArte}
+                  </Col>
+                  <Col xs={3} lg={2}>
+                    <span>{item.date.toDate().toLocaleString()}</span>
+                  </Col>
+                  <Col xs={3} lg={2}>
+                  {item.status}
+                  </Col>
 
-            <Row className="py-3">
-              <hr></hr>
-            </Row>
+                </Row>
+          </div>
+        ))}
 
-            <Row className="smallFont">
-            <Col xs={6} lg={8}>
-                  Exempplo de uma arte
-                </Col>
-                <Col xs={3} lg={2}>
-                  <span>30/11/2023</span>
-                </Col>
-                <Col xs={3} lg={2}>
-                  Iniciado
-                </Col>
-            </Row>
 
               </Row>
             </div>
           </Row>
-        
         </Col>
-
       </Row>
 
       <Modal show={show} onHide={handleClose}>
@@ -221,27 +290,27 @@ const Dashboard = () => {
           <Modal.Title>Solicitar nova Arte</Modal.Title>
         </Modal.Header>
         <Modal.Body>
+          <p>
+            {" "}
+            Prencha os campos abaixo e anexe os arquivos corretos para solicitar
+            sua nova arte
+          </p>
 
-        <p> Prencha os campos abaixo e anexe os arquivos corretos para solicitar sua nova arte</p>
-
-        <Form>
-                <Form.Group  controlId="NewArt">
-                <Form.Label>Nome do Cliente</Form.Label>
-                  <Form.Control
-                    type="text"
-                    placeholder="Digite o nome do cliente"
-                    
-                    onChange={handleNomeArte}
-                  
-                  />
-                  <Form.Label>Briefing</Form.Label>
-                  <Form.Control as="textarea" rows={5}  onChange={handleBriefing}/>
-                  <Form.Label>Anexar arquivos</Form.Label>
+          <Form>
+            <Form.Group controlId="NewArt">
+              <Form.Label>Nome do Cliente</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Digite o nome da arte"
+                onChange={handleNomeArte} // Chame a função corretamente
+              />
+              <Form.Label>Briefing</Form.Label>
+              <Form.Control as="textarea" rows={5} onChange={handleBriefing} />
+              <Form.Label>Anexar arquivos</Form.Label>
                   <Form.Control type="file" size="sm"  onChange={handleFileUpload} />
-
-                </Form.Group>
-              </Form>
-        
+            </Form.Group>
+          </Form>
+         <p className="py-3 ">{message}</p>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
@@ -252,7 +321,6 @@ const Dashboard = () => {
           </Button>
         </Modal.Footer>
       </Modal>
-
     </Container>
   );
 };

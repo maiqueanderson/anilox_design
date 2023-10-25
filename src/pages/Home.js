@@ -6,6 +6,7 @@ import Quote from '../components/HomeComponents/Quote';
 import Hero from '../components/HomeComponents/hero';
 import Services from '../components/Services/services';
 
+
 const Home = () =>{
     return(
         <>
@@ -15,6 +16,7 @@ const Home = () =>{
       <Portfolio />
       <Brands />
       <Client />
+   
       <Faq />
         </>
     )
