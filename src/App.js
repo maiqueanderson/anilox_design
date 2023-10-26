@@ -13,7 +13,7 @@ import Login from './components/auth/Login';
 import Admin from './pages/Admin';
 import AdmLogin from './components/auth/AdmLogin';
 import ClientArea from './pages/ClientArea';
-import GoogleDrivePicker from './components/GoogleDrivePicker/GoogleDrivePicker';
+
 
 
 
@@ -31,7 +31,7 @@ function App() {
         <Route path='/Admin' element={<Admin/>}></Route>
         <Route path='/AdmLogin' element={<AdmLogin/>}></Route>
         <Route path='/ClientArea' element={<ClientArea/>}></Route>
-        <Route path='/GoogleDrivePicker' element={<GoogleDrivePicker/>}></Route>
+        
 
       </Routes>
 

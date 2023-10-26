@@ -2,7 +2,16 @@ import React, { useEffect, useState } from "react";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { app, db } from "../../database/firebaseconfig";
-import { doc, getDoc, collection, addDoc, updateDoc, getDocs, query, where } from "firebase/firestore";
+import {
+  doc,
+  getDoc,
+  collection,
+  addDoc,
+  updateDoc,
+  getDocs,
+  query,
+  where,
+} from "firebase/firestore";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
@@ -14,14 +23,12 @@ import Btn from "../../components/Btn";
 import "./Dashboard.css";
 
 const Dashboard = () => {
-
   //Para selecionar o usuario
   const [user, setUser] = useState(null);
   const [userData, setUserData] = useState(null);
 
   //para pegar o historico das artes solicitadas
   const [historico, setHistorico] = useState([]);
-
 
   //Para trabalhar com o upload do arquivo
   const storage = getStorage(app);
@@ -41,40 +48,20 @@ const Dashboard = () => {
 
   //Para inserir informações digitadas pelo usuario
   const handleNomeArte = (event) => {
-    const { value } = event.target; 
-    setNomeArte(value); 
+    const { value } = event.target;
+    setNomeArte(value);
   };
 
   const handleBriefing = (event) => {
-    const { value } = event.target; 
-    setBriefing(value); 
+    const { value } = event.target;
+    setBriefing(value);
   };
 
-// eslint-disable-next-line 
-  const fetchHistorico = async () => {
-    try {
-      const collectionRef = collection(db, "artes");
-      const querySnapshot = await getDocs(query(collectionRef, where("uid", "==", user.uid)));
-  
-      const historicoData = [];
-      querySnapshot.forEach((doc) => {
-        historicoData.push(doc.data());
-      });
-  
-      setHistorico(historicoData);
-    } catch (error) {
-      console.error("Erro ao buscar histórico no Firestore:", error);
-    }
-  };
-  
 
-   // Para pegar o arquivo que o usuario selecionou
   const handleFileUpload = (e) => {
-   
-    const file = e.target.files[0]; 
+    const file = e.target.files[0];
 
     if (file) {
-  
       setArquivo(file);
       console.log("Arquivo selecionado:", file);
     } else {
@@ -85,78 +72,73 @@ const Dashboard = () => {
   const handleCreditUpdate = () => {
     const credit = parseInt(userData?.credit, 10);
     const menosCredit = credit - 1;
-  
+
     const documentRef = doc(db, "users", user.uid);
-  
-    const novoCredit = menosCredit.toString(); // Converta o novo crédito em uma string
-  
+
+    const novoCredit = menosCredit.toString(); 
+
     try {
-      // Atualize o campo de crédito no Firestore
+      
       updateDoc(documentRef, {
-        credit: novoCredit, // Atualize o campo 'credit' com o novo valor
+        credit: novoCredit, 
       });
-  
+
       console.log("Créditos atualizados com sucesso");
     } catch (error) {
       console.log("Erro ao atualizar créditos:", error);
     }
   };
-  
 
   // Para salvar no firebase
   const handleSaveToFirebase = async () => {
     const userCredits = parseInt(userData?.credit, 10);
 
-    if(userCredits < 1){
-      console.log('Usuario sem créditos');
-      setMessage('Você esta sem créditos por favor solicite novos créditos para continuar');
-
-    }else{
-
-      
-
+    if (userCredits < 1) {
+      console.log("Usuario sem créditos");
+      setMessage(
+        "Você esta sem créditos por favor solicite novos créditos para continuar"
+      );
+    } else {
       try {
         const auth = getAuth();
         const user = auth.currentUser;
-       
-    
+
         if (!user) {
           console.error("Nenhum usuário logado");
           return;
         }
-    
+
         const uid = user.uid;
-    
+
         // Para fazer o upload do arquivo para o Firebase Storage
         const storageRef = ref(storage, `uploads/${uid}/${arquivo.name}`);
         await uploadBytes(storageRef, arquivo);
-    
+
         //URL do arquivo após o upload
         const fileUrl = await getDownloadURL(storageRef);
-    
-        const collectionRef = collection(db, "artes"); 
+
+        const collectionRef = collection(db, "artes");
         await addDoc(collectionRef, {
           uid,
           nomeArte: nomeArte,
           briefing: briefing,
           arquivoUrl: fileUrl,
           date: new Date(),
-          status: "Solicitado"
+          status: "Solicitado",
         });
-    
+
         console.log("Valor salvo com sucesso no Firestore!");
-        setMessage('Arte Solicitada com sucesso!')
+        setMessage("Arte Solicitada com sucesso!");
         handleCreditUpdate();
+        window.location.reload();
       } catch (error) {
         console.error("Erro ao salvar no Firestore:", error);
-        setMessage('Erro ao solicitar arte, por favor entre em contato com o suporte')
+        setMessage(
+          "Erro ao solicitar arte, por favor entre em contato com o suporte"
+        );
       }
     }
-
   };
-
-  
-  
 
   useEffect(() => {
     const auth = getAuth(app);
@@ -164,12 +146,28 @@ const Dashboard = () => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (user) {
         setUser(user);
-        console.log(user);
+
         const userDocRef = doc(db, "users", user.uid);
-        fetchHistorico();
+
+        try {
+          const collectionRef = collection(db, "artes");
+          const querySnapshot = await getDocs(
+            query(collectionRef, where("uid", "==", user.uid))
+          );
+
+          const historicoData = [];
+          querySnapshot.forEach((doc) => {
+            historicoData.push(doc.data());
+          });
+
+          setHistorico(historicoData);
+        } catch (error) {
+          console.error("Erro ao buscar histórico no Firestore:", error);
+        }
 
         try {
           const userDocSnapshot = await getDoc(userDocRef);
+
           if (userDocSnapshot.exists()) {
             setUserData(userDocSnapshot.data());
           } else {
@@ -185,7 +183,8 @@ const Dashboard = () => {
     });
 
     return () => unsubscribe();
-  }, [navigate, fetchHistorico]);
+    // eslint-disable-next-line
+  }, [navigate]);
 
   if (!user) {
     return <div>Verificando a autenticação...</div>;
@@ -230,13 +229,10 @@ const Dashboard = () => {
 
           <Row className="div1 mb-5">
             <div>
-            
               <Row>
                 <Col xs={6} lg={8} className="boldFont">
                   <span className="color">Status da arte</span>
                 </Col>
-             
-                
 
                 <Row className="py-3">
                   <hr></hr>
@@ -258,27 +254,21 @@ const Dashboard = () => {
                   <hr></hr>
                 </Row>
 
-                
-                 
-
-                  {historico.map((item, index) => (
-          <div key={index}>
-          <Row className="smallFont py-2">
-            <Col xs={6} lg={8}>
-            {item.nomeArte}
-                  </Col>
-                  <Col xs={3} lg={2}>
-                    <span>{item.date.toDate().toLocaleString()}</span>
-                  </Col>
-                  <Col xs={3} lg={2}>
-                  {item.status}
-                  </Col>
-
-                </Row>
-          </div>
-        ))}
-
-
+                {historico.map((item, index) => (
+                  <div key={index}>
+                    <Row className="smallFont py-2">
+                      <Col xs={6} lg={8}>
+                        {item?.nomeArte}
+                      </Col>
+                      <Col xs={3} lg={2}>
+                        <span>{item?.date.toDate().toLocaleString()}</span>
+                      </Col>
+                      <Col xs={3} lg={2}>
+                        {item?.status}
+                      </Col>
+                    </Row>
+                  </div>
+                ))}
               </Row>
             </div>
           </Row>
@@ -302,15 +292,15 @@ const Dashboard = () => {
               <Form.Control
                 type="text"
                 placeholder="Digite o nome da arte"
-                onChange={handleNomeArte} // Chame a função corretamente
+                onChange={handleNomeArte} 
               />
               <Form.Label>Briefing</Form.Label>
               <Form.Control as="textarea" rows={5} onChange={handleBriefing} />
               <Form.Label>Anexar arquivos</Form.Label>
-                  <Form.Control type="file" size="sm"  onChange={handleFileUpload} />
+              <Form.Control type="file" size="sm" onChange={handleFileUpload} />
             </Form.Group>
           </Form>
-         <p className="py-3 ">{message}</p>
+          <p className="py-3 ">{message}</p>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
