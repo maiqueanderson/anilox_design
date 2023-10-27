@@ -1,65 +1,58 @@
-import React, { useEffect, useState } from "react";
-import {
-  getAuth,
-  onAuthStateChanged,
-  createUserWithEmailAndPassword,
-} from "firebase/auth";
-import { collection, doc, setDoc } from "firebase/firestore";
+import AdmDashboard from "../components/AdmDashboard/UserCreate";
+import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import { app, db } from "../database/firebaseconfig";
-import { Container, Form } from "react-bootstrap";
-import Button from "react-bootstrap/Button";
+import React, { useState, useEffect } from "react";
 import Modal from "react-bootstrap/Modal";
+import { app, db } from "../database/firebaseconfig";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { collection, getDocs, query, where } from "firebase/firestore";
+
+
+
+import "../components/Dashboard/Dashboard.css";
 import Btn from "../components/Btn";
 
 const Admin = () => {
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
-  const [credit, setCredit] = useState(0);
 
+
+
+
+  //Configurações do Modal
   const [show, setShow] = useState(false);
-
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const handleSubmit = async () => {
-    const auth = getAuth(app);
-    try {
-      const dataUser = await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-      if (dataUser) {
-        try {
-          const usersRef = collection(db, "users");
-          await setDoc(doc(usersRef, auth.currentUser.uid), {
-            name,
-            email,
-            credit,
-            uid: auth.currentUser.uid,
-          });
-          handleShow();
-        } catch (err) {
-          console.log("errDoc: ", err);
-        }
-      }
-    } catch (err) {
-      console.log("errUser: ", err);
-    }
-  };
+  //para pegar o historico das artes solicitadas
+  const [historico, setHistorico] = useState([]);
 
   useEffect(() => {
     const auth = getAuth(app);
 
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (user && user.uid === "alZxv5w95fNAxRBeDoKUjT3nUjp1") {
         setUser(user);
-        console.log(user);
+
+        try {
+          const collectionRef = collection(db, "artes");
+          const querySnapshot = await getDocs(
+            query(
+              collectionRef,
+              where("status", "==", "Solicitado" || "Alteração")
+            )
+          );
+
+          const historicoData = [];
+          querySnapshot.forEach((doc) => {
+            historicoData.push(doc.data());
+          });
+
+          setHistorico(historicoData);
+        } catch (error) {
+          console.error("Erro ao buscar histórico no Firestore:", error);
+        }
       } else {
         navigate("/AdmLogin");
       }
@@ -74,59 +67,95 @@ const Admin = () => {
 
   return (
     <Container>
-      <h1>Criar Novo Usuario</h1>
-      <Form>
-        <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>E-mail</Form.Label>
-          <Form.Control
-            type="email"
-            placeholder="E-mail do cliente"
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </Form.Group>
+      <Row>
+        <Col xs={12} lg={3}>
+          <div className="div1 mb-5">
+            <Row>Bem vindo</Row>
+            <Row className="clientName">Anilox Design</Row>
+            <Row>
+              <Btn texto="Dashboard" isActive={true} />
+            </Row>
+            <Row>
+              <Btn texto="Clientes" />
+            </Row>
+            <Row>
+              <Btn texto="Criar Usuario" onClick={handleShow} />
+            </Row>
+          </div>
+        </Col>
 
-        <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label>Senha</Form.Label>
-          <Form.Control
-            type="password"
-            placeholder="Senha do Cliente"
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </Form.Group>
+        <Col xs={12} lg={9}>
+          <Row>
+            <div className="searchDiv mb-3">
+              <Form>
+                <Form.Group controlId="Search">
+                  <Form.Control type="text" placeholder="Buscar artes" />
+                </Form.Group>
+              </Form>
+            </div>
+          </Row>
 
-        <Form.Group className="mb-3" controlId="formBasicName">
-          <Form.Label>Nome do Cliente</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Nome do Cliente"
-            onChange={(e) => setName(e.target.value)}
-          />
-        </Form.Group>
+          <Row className="div1 mb-5">
+            <div>
+              <Row>
+                <Col xs={6} lg={8} className="boldFont">
+                  <span className="color">Artes Solicitadas</span>
+                </Col>
 
-        <Form.Group className="mb-3" controlId="formBasicCredit">
-          <Form.Label>Quantidade de creditos</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Creditos do cliente"
-            onChange={(e) => setCredit(e.target.value)}
-          />
-        </Form.Group>
+                <Row className="py-3">
+                  <hr></hr>
+                </Row>
 
-        <Btn texto="Criar Usuario" onClick={handleSubmit} />
-      </Form>
+                <Row className="smallFont">
+                  <Col xs={3} lg={4}>
+                    Nome da Arte
+                  </Col>
+                  <Col xs={3} lg={4}>
+                    Cliente
+                  </Col>
+                  <Col xs={3} lg={4}>
+                    Data
+                  </Col>
+                </Row>
+
+                <Row className="py-3">
+                  <hr></hr>
+                </Row>
+
+                {historico.map((item, index) => (
+                  <div key={index}>
+                    <Row className="smallFont py-2">
+                      <Col xs={3} lg={4}>
+                        {item?.nomeArte}
+                      </Col>
+                      <Col xs={3} lg={4}>
+                        {item?.cliente}
+                      </Col>
+                      <Col xs={3} lg={2}>
+                        <span>{item?.date.toDate().toLocaleString()}</span>
+                      </Col>
+                      <Col xs={3} lg={2}>
+                       
+                      <Button onClick={() => navigate(`/pagina-detalhes/${item.nomeArte}`)}>Ver</Button>
+
+
+                      </Col>
+                    </Row>
+                  </div>
+                ))}
+              </Row>
+            </div>
+          </Row>
+        </Col>
+      </Row>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Erro ao entrar</Modal.Title>
+          <Modal.Title>Criar Usuario novo usuário</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          E-mail ou senha incorreta, por favor tente novamente
+          <AdmDashboard />
         </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Fechar
-          </Button>
-        </Modal.Footer>
       </Modal>
     </Container>
   );

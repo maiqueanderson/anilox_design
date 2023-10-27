@@ -102,6 +102,7 @@ const Dashboard = () => {
       try {
         const auth = getAuth();
         const user = auth.currentUser;
+        const userName = userData?.name;
 
         if (!user) {
           console.error("Nenhum usuário logado");
@@ -109,6 +110,8 @@ const Dashboard = () => {
         }
 
         const uid = user.uid;
+        
+        
 
         // Para fazer o upload do arquivo para o Firebase Storage
         const storageRef = ref(storage, `uploads/${uid}/${arquivo.name}`);
@@ -125,6 +128,7 @@ const Dashboard = () => {
           arquivoUrl: fileUrl,
           date: new Date(),
           status: "Solicitado",
+          cliente: userName,
         });
 
         console.log("Valor salvo com sucesso no Firestore!");
