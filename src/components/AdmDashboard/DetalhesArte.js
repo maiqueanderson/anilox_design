@@ -1,7 +1,14 @@
 import { useParams } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 import { db } from '../../database/firebaseconfig';
-import { doc, getDoc } from "firebase/firestore";
+import {
+
+  collection,
+
+  getDocs,
+  query,
+  where,
+} from "firebase/firestore";
 
 const DetalhesArte = () => {
   const { nomeArte } = useParams();
@@ -10,21 +17,23 @@ const DetalhesArte = () => {
   useEffect(() => {
     const fetchArteDetails = async () => {
         console.log(nomeArte)
-      try {
-        // Cria uma referência direta ao documento da arte com base no nomeArte
-        const arteRef = doc(db, "artes", nomeArte);
-        const arteDoc = await getDoc(arteRef);
+        try {
+          const collectionRef = collection(db, "artes");
+          const querySnapshot = await getDocs(
+            query(collectionRef, where("nomeArte", "==", nomeArte))
+          );
 
-        if (arteDoc.exists()) {
-          // Extrai os detalhes da arte do documento
-          const detalhesArte = arteDoc.data();
-          setArte(detalhesArte);
-        } else {
-          console.error('Arte não encontrada');
+          const historicoData = [];
+          querySnapshot.forEach((doc) => {
+            console.log("Dados da arte obtidos:", historicoData);
+            historicoData.push(doc.data());
+            setArte(historicoData);
+          });
+
+          
+        } catch (error) {
+          console.error("Erro ao buscar histórico no Firestore:", error);
         }
-      } catch (error) {
-        console.error('Erro ao buscar detalhes da arte:', error);
-      }
     };
 
     fetchArteDetails();
@@ -36,8 +45,8 @@ const DetalhesArte = () => {
 
   return (
     <div>
-      <h2>Detalhes da Arte: {arte?.nomeArte}</h2>
-      <p>Cliente: {arte?.cliente}</p>
+      <h2>Detalhes da Arte: {arte[0].nomeArte}</h2>
+      <p>Cliente: {arte[0].cliente}</p>
       {/* Adicione mais detalhes da arte aqui */}
     </div>
   );
