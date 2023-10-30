@@ -1,18 +1,18 @@
-import AdmDashboard from "../components/AdmDashboard/UserCreate";
-import { Button, Col, Container, Form, Row } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import AdmDashboard from "../AdmDashboard/UserCreate";
+import {  Col, Container, Form, Row } from "react-bootstrap";
+import { Link, useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import Modal from "react-bootstrap/Modal";
-import { app, db } from "../database/firebaseconfig";
+import { app, db } from "../../database/firebaseconfig"
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { collection, getDocs, query, where } from "firebase/firestore";
+import { collection, getDocs, query } from "firebase/firestore";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faTrash, faCoins} from '@fortawesome/free-solid-svg-icons'
 
+import "../Dashboard/Dashboard.css";
+import Btn from "../Btn";
 
-
-import "../components/Dashboard/Dashboard.css";
-import Btn from "../components/Btn";
-
-const Admin = () => {
+const Clientes = () => {
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
 
@@ -21,7 +21,7 @@ const Admin = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  //para pegar o historico das artes solicitadas
+  //para pegar o historico dos clientes
   const [historico, setHistorico] = useState([]);
 
   useEffect(() => {
@@ -32,11 +32,10 @@ const Admin = () => {
         setUser(user);
 
         try {
-          const collectionRef = collection(db, "artes");
+          const collectionRef = collection(db, "users");
           const querySnapshot = await getDocs(
             query(
-              collectionRef,
-              where("status", "==", "Solicitado" || "Alteração")
+              collectionRef
             )
           );
 
@@ -69,10 +68,10 @@ const Admin = () => {
             <Row>Bem vindo</Row>
             <Row className="clientName">Anilox Design</Row>
             <Row>
-              <Btn texto="Dashboard" isActive={true} />
+              <Btn texto="Dashboard" onClick={() => navigate('/Admin')} />
             </Row>
             <Row>
-              <Btn texto="Clientes" onClick={() => navigate('/Clientes')} />
+              <Btn texto="Clientes" isActive={true} onClick={() => navigate('/Clientes')} />
             </Row>
             <Row>
               <Btn texto="Criar Usuario" onClick={handleShow} />
@@ -85,7 +84,7 @@ const Admin = () => {
             <div className="searchDiv mb-3">
               <Form>
                 <Form.Group controlId="Search">
-                  <Form.Control type="text" placeholder="Buscar artes" />
+                  <Form.Control type="text" placeholder="Buscar clientes" />
                 </Form.Group>
               </Form>
             </div>
@@ -95,7 +94,7 @@ const Admin = () => {
             <div>
               <Row>
                 <Col xs={6} lg={8} className="boldFont">
-                  <span className="color">Artes Solicitadas</span>
+                  <span className="color">Clientes ativos</span>
                 </Col>
 
                 <Row className="py-3">
@@ -104,13 +103,10 @@ const Admin = () => {
 
                 <Row className="smallFont">
                   <Col xs={3} lg={4}>
-                    Nome da Arte
+                    Nome do cliente
                   </Col>
                   <Col xs={3} lg={4}>
-                    Cliente
-                  </Col>
-                  <Col xs={3} lg={4}>
-                    Data
+                    Créditos
                   </Col>
                 </Row>
 
@@ -121,18 +117,22 @@ const Admin = () => {
                 {historico.map((item, index) => (
                   <div key={index}>
                     <Row className="smallFont py-2">
-                      <Col xs={3} lg={4}>
-                        {item?.nomeArte}
+                      <Col xs={4} lg={4}>
+                        {item?.name}
                       </Col>
-                      <Col xs={3} lg={4}>
-                        {item?.cliente}
+                      <Col xs={4} lg={4}>
+                        {item?.credit}
                       </Col>
-                      <Col xs={3} lg={2}>
-                        <span>{item?.date.toDate().toLocaleString()}</span>
+                      <Col xs={2} lg={2}>
+                      <Link onClick={''}>
+                      <FontAwesomeIcon icon={faTrash} size="2xl" style={{color: "#e5141e",}} />
+                      </Link>
                       </Col>
-                      <Col xs={3} lg={2}>
-                       
-                      <Button onClick={() => navigate(`/pagina-detalhes/${item.nomeArte}`)}>Ver</Button>
+                      <Col xs={2} lg={2}>
+                       <Link>
+
+                      <FontAwesomeIcon icon={faCoins} size="2xl" style={{color: "#189e2a",}} />
+                       </Link>
 
 
                       </Col>
@@ -157,4 +157,4 @@ const Admin = () => {
   );
 };
 
-export default Admin;
+export default Clientes;

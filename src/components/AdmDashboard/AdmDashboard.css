@@ -5,6 +5,10 @@
     border-radius: 20px;
 }
 
+.arte h2{
+    font-weight: 700;
+}
+
 .briefing{
     background-color: #fff;
     font-family: Roboto;

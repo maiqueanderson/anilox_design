@@ -13,7 +13,8 @@ import Login from './components/auth/Login';
 import Admin from './pages/Admin';
 import AdmLogin from './components/auth/AdmLogin';
 import ClientArea from './pages/ClientArea';
-import DetalhesArte from './components/AdmDashboard/DetalhesArte'
+import DetalhesArte from './components/AdmDashboard/DetalhesArte';
+import Clientes from './components/AdmDashboard/Clientes';
 
 
 
@@ -32,6 +33,7 @@ function App() {
         <Route path='/Admin' element={<Admin/>}></Route>
         <Route path='/AdmLogin' element={<AdmLogin/>}></Route>
         <Route path='/ClientArea' element={<ClientArea/>}></Route>
+        <Route path='/Clientes' element={<Clientes/>}></Route>
         <Route path='/pagina-detalhes/:nomeArte' element={<DetalhesArte />} /> 
         
 
