@@ -7,15 +7,21 @@ import Modal from "react-bootstrap/Modal";
 import Btn from "../Btn";
 import { app } from "../../database/firebaseconfig";
 
+import UserCreate from "../AdmDashboard/UserCreate";
+
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
   const [show, setShow] = useState(false);
+  const [UserCreateModal, setUserCreateModal] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const UserCreateModalShow = () => setUserCreateModal(true);
+  const UserCreateClose = () => setUserCreateModal(false);
 
   const handleSubmit = async () => {
     try {
@@ -65,9 +71,12 @@ const Login = () => {
 
         <Col lg='4' xs='9' className="mb-5 col-md-5 mx-auto">
           <Row >
-          <Btn texto='Entrar' onClick={handleSubmit}>
-         
-        </Btn>
+          <Col>       
+          <Btn texto='Entrar' onClick={handleSubmit}/>
+          </Col>
+          <Col>       
+          <Btn texto='Criar conta' onClick={UserCreateModalShow}/>
+          </Col>
           </Row>
         </Col>
 
@@ -88,6 +97,16 @@ const Login = () => {
           </Button>
         </Modal.Footer>
       </Modal>
+
+      <Modal show={UserCreateModal} onHide={UserCreateClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Criar Usuario novo usuário</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <UserCreate />
+        </Modal.Body>
+      </Modal>
+
     </Container>
     </>
   );

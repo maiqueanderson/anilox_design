@@ -2,20 +2,18 @@
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
-
-import { app, db } from "../database/firebaseconfig";
+import { app, db } from "../../database/firebaseconfig";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { collection, getDocs, query, where } from "firebase/firestore";
 
 
 
-import "../components/Dashboard/Dashboard.css";
-import Btn from "../components/Btn";
+import "../Dashboard/Dashboard.css";
+import Btn from "../Btn";
 
-const Admin = () => {
+const ArteFinalizada = () => {
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
-
 
   //para pegar o historico das artes solicitadas
   const [historico, setHistorico] = useState([]);
@@ -32,7 +30,7 @@ const Admin = () => {
           const querySnapshot = await getDocs(
             query(
               collectionRef,
-              where("status", "==", "Solicitado" || "Alteração")
+              where("status", "==", "Aprovado" || "Finalizado")
             )
           );
 
@@ -65,13 +63,13 @@ const Admin = () => {
             <Row>Bem vindo</Row>
             <Row className="clientName">Anilox Design</Row>
             <Row>
-              <Btn texto="Dashboard" isActive={true} />
+              <Btn texto="Dashboard" onClick={() => navigate('/Admin')}  />
             </Row>
             <Row>
               <Btn texto="Clientes" onClick={() => navigate('/Clientes')} />
             </Row>
             <Row>
-              <Btn texto="Artes Finalizadas" onClick={() => navigate('/ArteFinalizada')} />
+              <Btn texto="Artes Finalizadas" isActive={true}/>
             </Row>
           </div>
         </Col>
@@ -91,7 +89,7 @@ const Admin = () => {
             <div>
               <Row>
                 <Col xs={6} lg={8} className="boldFont">
-                  <span className="color">Artes Solicitadas</span>
+                  <span className="color">Artes Finalizadas</span>
                 </Col>
 
                 <Row className="py-3">
@@ -144,4 +142,4 @@ const Admin = () => {
   );
 };
 
-export default Admin;
+export default ArteFinalizada;

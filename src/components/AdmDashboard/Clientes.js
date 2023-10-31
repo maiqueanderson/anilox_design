@@ -1,8 +1,7 @@
-import AdmDashboard from "../AdmDashboard/UserCreate";
+
 import {  Col, Container, Form, Row } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
-import Modal from "react-bootstrap/Modal";
 import { app, db } from "../../database/firebaseconfig"
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { collection, getDocs, query } from "firebase/firestore";
@@ -15,11 +14,6 @@ import Btn from "../Btn";
 const Clientes = () => {
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
-
-  //Configurações do Modal
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
 
   //para pegar o historico dos clientes
   const [historico, setHistorico] = useState([]);
@@ -74,7 +68,7 @@ const Clientes = () => {
               <Btn texto="Clientes" isActive={true} onClick={() => navigate('/Clientes')} />
             </Row>
             <Row>
-              <Btn texto="Criar Usuario" onClick={handleShow} />
+              <Btn texto="Artes Finalizadas" onClick={() => navigate('/ArteFinalizada')} />
             </Row>
           </div>
         </Col>
@@ -144,15 +138,6 @@ const Clientes = () => {
           </Row>
         </Col>
       </Row>
-
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Criar Usuario novo usuário</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <AdmDashboard />
-        </Modal.Body>
-      </Modal>
     </Container>
   );
 };

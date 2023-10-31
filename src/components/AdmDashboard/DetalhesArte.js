@@ -136,6 +136,7 @@ const DetalhesArte = () => {
     <Row>
       <Col lg={10} xs={6}>
       <h2>{arte[0].cliente}</h2>
+      <p>Status: {arte[0].status}</p>
       </Col>
 
       <Col lg={2} xs={6}>
