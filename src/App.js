@@ -17,6 +17,7 @@ import DetalhesArte from './components/AdmDashboard/DetalhesArte';
 import Clientes from './components/AdmDashboard/Clientes';
 import UserTerms from './components/UserTerms/UserTerms';
 import ArteFinalizada from './components/AdmDashboard/ArteFinalizada';
+import ClienteDetalhe from './components/AdmDashboard/ClienteDetalhe';
 
 
 
@@ -39,6 +40,7 @@ function App() {
         <Route path='/UserTerms' element={<UserTerms/>}></Route>
         <Route path='/ArteFinalizada' element={<ArteFinalizada/>}></Route>
         <Route path='/pagina-detalhes/:nomeArte' element={<DetalhesArte />} /> 
+        <Route path='/cliente-detalhe/:nomeCliente' element={<ClienteDetalhe />} /> 
         
 
       </Routes>

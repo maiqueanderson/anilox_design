@@ -1,22 +1,44 @@
-
-import {  Col, Container, Form, Row } from "react-bootstrap";
+import { Col, Container, Form, Row } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
-import { app, db } from "../../database/firebaseconfig"
+import { app, db } from "../../database/firebaseconfig";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { collection, getDocs, query } from "firebase/firestore";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faTrash, faCoins} from '@fortawesome/free-solid-svg-icons'
+import { collection, getDocs, query, deleteDoc, doc } from "firebase/firestore";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
 
 import "../Dashboard/Dashboard.css";
 import Btn from "../Btn";
 
 const Clientes = () => {
   const [user, setUser] = useState(null);
+  const [cliente, setCliente] = useState(null);
   const navigate = useNavigate();
+
+  const [show, setShow] = useState(false);
+  const handleClose = () => {
+    window.location.reload();
+  };
+  const handleShow = () => {
+    setShow(true);
+  };
 
   //para pegar o historico dos clientes
   const [historico, setHistorico] = useState([]);
+
+  //Para deletar um cliente
+  const handleDeleteClient = async (clientId, clienteName) => {
+    try {
+      const clientRef = doc(db, "users", clientId);
+      await deleteDoc(clientRef);
+      setCliente(clienteName);
+      handleShow();
+    } catch (error) {
+      console.error("Erro ao excluir cliente:", error);
+    }
+  };
 
   useEffect(() => {
     const auth = getAuth(app);
@@ -27,11 +49,7 @@ const Clientes = () => {
 
         try {
           const collectionRef = collection(db, "users");
-          const querySnapshot = await getDocs(
-            query(
-              collectionRef
-            )
-          );
+          const querySnapshot = await getDocs(query(collectionRef));
 
           const historicoData = [];
           querySnapshot.forEach((doc) => {
@@ -62,13 +80,20 @@ const Clientes = () => {
             <Row>Bem vindo</Row>
             <Row className="clientName">Anilox Design</Row>
             <Row>
-              <Btn texto="Dashboard" onClick={() => navigate('/Admin')} />
+              <Btn texto="Dashboard" onClick={() => navigate("/Admin")} />
             </Row>
             <Row>
-              <Btn texto="Clientes" isActive={true} onClick={() => navigate('/Clientes')} />
+              <Btn
+                texto="Clientes"
+                isActive={true}
+                onClick={() => navigate("/Clientes")}
+              />
             </Row>
             <Row>
-              <Btn texto="Artes Finalizadas" onClick={() => navigate('/ArteFinalizada')} />
+              <Btn
+                texto="Artes Finalizadas"
+                onClick={() => navigate("/ArteFinalizada")}
+              />
             </Row>
           </div>
         </Col>
@@ -118,17 +143,27 @@ const Clientes = () => {
                         {item?.credit}
                       </Col>
                       <Col xs={2} lg={2}>
-                      <Link onClick={''}>
-                      <FontAwesomeIcon icon={faTrash} size="2xl" style={{color: "#e5141e",}} />
-                      </Link>
+                        <Link
+                          onClick={() =>
+                            handleDeleteClient(item.uid, item.name)
+                          }
+                        >
+                          <FontAwesomeIcon
+                            icon={faTrash}
+                            size="2xl"
+                            style={{ color: "#e5141e" }}
+                          />
+                        </Link>
                       </Col>
+
                       <Col xs={2} lg={2}>
-                       <Link>
-
-                      <FontAwesomeIcon icon={faCoins} size="2xl" style={{color: "#189e2a",}} />
-                       </Link>
-
-
+                        <Button
+                          onClick={() =>
+                            navigate(`/cliente-detalhe/${item.name}`)
+                          }
+                        >
+                          Ver
+                        </Button>
                       </Col>
                     </Row>
                   </div>
@@ -138,6 +173,18 @@ const Clientes = () => {
           </Row>
         </Col>
       </Row>
+
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Usuario Deletado com sucesso!</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>O usuario {cliente} foi deletado com sucesso!</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Fechar
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </Container>
   );
 };
