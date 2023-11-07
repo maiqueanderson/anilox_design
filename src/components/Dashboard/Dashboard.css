@@ -76,3 +76,20 @@
         margin: 10px 0;
     }
   }
+
+  .ButtonCredit a{
+    text-align: center;
+    text-decoration:none;
+    background-color: #20a347;
+    padding: 8px;
+    border-radius: 10px;
+    color: #fff;
+    width: 12rem;
+    @media screen and (min-width: 992px) {
+        margin: 10px 0;
+    }
+}
+
+.ButtonCredit a:hover{
+  background-color: #0d6126;
+}

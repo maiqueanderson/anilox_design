@@ -43,8 +43,11 @@ const Dashboard = () => {
 
   //Configurações do Modal
   const [show, setShow] = useState(false);
+  const [creditShow, setCreditShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const handleCreditShow = () => setCreditShow(true);
+  const handleCreditClose = () => setCreditShow(false);
 
   //Para inserir informações digitadas pelo usuario
   const handleNomeArte = (event) => {
@@ -56,7 +59,6 @@ const Dashboard = () => {
     const { value } = event.target;
     setBriefing(value);
   };
-
 
   const handleFileUpload = (e) => {
     const file = e.target.files[0];
@@ -75,12 +77,11 @@ const Dashboard = () => {
 
     const documentRef = doc(db, "users", user.uid);
 
-    const novoCredit = menosCredit.toString(); 
+    const novoCredit = menosCredit.toString();
 
     try {
-      
       updateDoc(documentRef, {
-        credit: novoCredit, 
+        credit: novoCredit,
       });
 
       console.log("Créditos atualizados com sucesso");
@@ -110,8 +111,6 @@ const Dashboard = () => {
         }
 
         const uid = user.uid;
-        
-        
 
         // Para fazer o upload do arquivo para o Firebase Storage
         const storageRef = ref(storage, `uploads/${uid}/${arquivo.name}`);
@@ -187,8 +186,17 @@ const Dashboard = () => {
     });
 
     return () => unsubscribe();
+
     // eslint-disable-next-line
   }, [navigate]);
+
+  useEffect(() => {
+    if (userData?.credit < 1) {
+      handleCreditShow();
+    } else {
+      handleCreditClose();
+    }
+  }, [userData?.credit]);
 
   if (!user) {
     return <div>Verificando a autenticação...</div>;
@@ -212,10 +220,14 @@ const Dashboard = () => {
             <Row>
               <Btn texto="Solicitar Arte" onClick={handleShow} />
             </Row>
-            <Row>
-              <Button className="creditButton" variant="success" size="sm">
-                Solicitar Créditos
-              </Button>
+            <Row className="ButtonCredit">
+            <a
+            href="https://api.whatsapp.com/send?phone=5571997284970&text=Ol%C3%A1%20eu%20gostaria%20de%20solicitar%20cr%C3%A9ditos%20para%20a%20minha%20empresa"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Solicitar Créditos
+          </a>
             </Row>
           </div>
         </Col>
@@ -296,7 +308,7 @@ const Dashboard = () => {
               <Form.Control
                 type="text"
                 placeholder="Digite o nome da arte"
-                onChange={handleNomeArte} 
+                onChange={handleNomeArte}
               />
               <Form.Label>Briefing</Form.Label>
               <Form.Control as="textarea" rows={5} onChange={handleBriefing} />
@@ -313,6 +325,31 @@ const Dashboard = () => {
           <Button variant="primary" onClick={handleSaveToFirebase}>
             Solicitar
           </Button>
+        </Modal.Footer>
+      </Modal>
+
+      <Modal className="ButtonCredit" show={creditShow} onHide={handleCreditClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Você Está sem créditos!</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <p>
+            {" "}
+            Atenção você está sem créditos, dessa forma não poderá solicitar
+            novas artes, por favor entre em contato para obter novos créditos.
+          </p>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleCreditClose}>
+            Cancelar
+          </Button>
+          <a
+            href="https://api.whatsapp.com/send?phone=5571997284970&text=Ol%C3%A1%20eu%20gostaria%20de%20solicitar%20cr%C3%A9ditos%20para%20a%20minha%20empresa"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Solicitar Créditos
+          </a>
         </Modal.Footer>
       </Modal>
     </Container>

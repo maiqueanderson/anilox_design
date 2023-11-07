@@ -32,7 +32,7 @@ const UserCreate = () => {
           await setDoc(doc(usersRef, auth.currentUser.uid), {
             name,
             email,
-            credit: 5,
+            credit: 0,
             uid: auth.currentUser.uid,
           });
           navigate("/ClientArea");

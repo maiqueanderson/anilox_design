@@ -39,7 +39,7 @@ CLÁUSULA TERCEIRA – DO CADASTRO DO CONTRATANTE
 CLÁUSULA QUARTA – DA COMPRA DE SERVIÇOS
 <br/><br/>
 4.1 – O CONTRATANTE, que atenda aos requisitos da cláusula anterior e vier a se cadastrar, poderá solicitar a compra de serviços digitais através do site da CONTRATADA e seus subdomínios.<br/>
-4.2 – A CONTRATADA disponibiliza um serviço especializado na criação de artes destinadas à flexografia. Todo usuário registrado terá direito a 5 créditos para teste dos serviços de forma gratuita. Cada crédito permite a solicitação de uma arte, porém é importante ressaltar que esses créditos não são cumulativos e expiram ao final de um mês.<br/>
+4.2 – A CONTRATADA disponibiliza um serviço especializado na criação de artes destinadas à flexografia. Todo novo usuário registrado irá começar com 0 créditos. Cada crédito permite a solicitação de uma arte, porém é importante ressaltar que esses créditos não são cumulativos e expiram ao final de um mês.<br/>
 4.3 – É de inteira responsabilidade do CONTRATANTE:<br/>
 		Providenciar o seu acesso à internet e pagar todas as taxas eventualmente cobradas por terceiros com relação a este serviço.<br/>
 		Providenciar seu endereço eletrônico para troca de mensagens via internet, e pagar todas as taxas eventualmente cobradas por terceiros com relação a este serviço. Efetuar seu cadastro no site da CONTRATADA.<br/>
@@ -67,7 +67,7 @@ A CONTRATADA fará o possível para manter o prazo original, mas essas situaçõ
 4.12 – A CONTRATADA não se responsabiliza por quaisquer erros ou omissões na arte após o clichê ter sido gravado. É de responsabilidade exclusiva do cliente verificar todas as informações contidas na arte, incluindo aspectos técnicos e ortográficos, antes de aprovar a arte para a confecção do clichê. Recomendamos uma revisão minuciosa para garantir que todas as informações estejam corretas e atendam às suas especificações.<br/>
 Ao aprovar a arte, o cliente confirma que todas as informações e detalhes estão de acordo com suas necessidades e requisitos. Após a aprovação da arte, quaisquer custos relacionados a correções ou reimpressões devido a erros na arte serão de responsabilidade do cliente.<br/>
 A Anilox Design se esforça para oferecer um serviço de alta qualidade, mas é essencial que o cliente desempenhe um papel ativo na verificação e aprovação das artes para evitar possíveis problemas futuros.<br/>
-4.13 – Caso o CONTRATANTE esgote seus créditos, ele terá a opção de comprar créditos adicionais diretamente com a CONTRATADA. Cada crédito custa R$ 10,00.<br/>
+4.13 – Caso o CONTRATANTE esgote seus créditos e/ou esteja sem créditos, ele terá que comprar créditos adicionais diretamente com a CONTRATADA. Cada crédito custa R$ 10,00 e dá direito a solicitação de 1 arte que será feita pela CONTRATADA.<br/>
 4.14 – Após a aprovação da arte pelo CONTRATANTE, será realizada a cobrança do valor de R$ 60,00 por cada arte aprovada. Este pagamento é essencial para que a Anilox Design possa disponibilizar os arquivos abertos da arte, necessários para a gravação do clichê.<br/>
 A entrega dos arquivos abertos ocorrerá somente após a efetivação do pagamento, que pode ser realizado por meio de PIX, Boleto Bancário ou cartão de crédito, e a devida comprovação do pagamento.<br/>
 4.15 – Os serviços oferecidos pela CONTRATADA são estritamente de prestação de serviços de criação de artes digitais. Não fornecemos nenhum tipo de nota fiscal relacionada a esses serviços.<br/>
