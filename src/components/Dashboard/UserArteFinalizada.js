@@ -1,18 +1,23 @@
-
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import { app, db } from "../../database/firebaseconfig";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { collection, getDocs, query, where } from "firebase/firestore";
-
-
+import {
+  collection,
+  getDocs,
+  query,
+  where,
+  getDoc,
+  doc,
+} from "firebase/firestore";
 
 import "../Dashboard/Dashboard.css";
 import Btn from "../Btn";
 
-const ArteFinalizada = () => {
+const UserArteFinalizada = () => {
   const [user, setUser] = useState(null);
+  const [userData, setUserData] = useState(null);
   const navigate = useNavigate();
 
   //para buscar pelo nome do cliente
@@ -23,15 +28,18 @@ const ArteFinalizada = () => {
     const auth = getAuth(app);
 
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
-      if (user && user.uid === "alZxv5w95fNAxRBeDoKUjT3nUjp1") {
+      if (user) {
         setUser(user);
+        const userDocRef = doc(db, "users", user.uid);
 
         try {
           const collectionRef = collection(db, "artes");
+
           const querySnapshot = await getDocs(
             query(
               collectionRef,
               where("status", "in", ["Aprovado", "Finalizado"]),
+              where("uid", "==", user.uid)
             )
           );
 
@@ -40,22 +48,36 @@ const ArteFinalizada = () => {
             historicoData.push(doc.data());
           });
 
-           //para filtrar com base na busca
-           const filteredResults = historicoData.filter((item) =>
-           item.nomeArte.toLowerCase().includes(searchTerm.toLowerCase())
-         );
+          //para filtrar com base na busca
+          const filteredResults = historicoData.filter((userData) =>
+          userData.nomeArte.toLowerCase().includes(searchTerm.toLowerCase())
+        );
 
-         setSearchResults(filteredResults);
+        setSearchResults(filteredResults);
+
         // Limpa os resultados ao limpar o termo de busca
         if (!searchTerm) {
-          setSearchResults(historicoData);
-        }
+         setSearchResults(historicoData);
+       }
 
         } catch (error) {
           console.error("Erro ao buscar histórico no Firestore:", error);
         }
+
+        try {
+          const userDocSnapshot = await getDoc(userDocRef);
+
+          if (userDocSnapshot.exists()) {
+            setUserData(userDocSnapshot.data());
+          } else {
+            console.log("Documento de usuário não encontrado no Firestore.");
+            console.log(userDocSnapshot);
+          }
+        } catch (error) {
+          console.error("Erro ao buscar dados de usuário no Firestore:", error);
+        }
       } else {
-        navigate("/AdmLogin");
+        navigate("/Login");
       }
     });
 
@@ -72,15 +94,26 @@ const ArteFinalizada = () => {
         <Col xs={12} lg={3}>
           <div className="div1 mb-5">
             <Row>Bem vindo</Row>
-            <Row className="clientName">Anilox Design</Row>
+            <Row className="clientName">{userData?.name}</Row>
+            <Row className="credits">{userData?.credit}</Row>
+            <Row>Créditos</Row>
             <Row>
-              <Btn texto="Dashboard" onClick={() => navigate('/Admin')}  />
+              <Btn texto="Dashboard" onClick={() => navigate("/ClientArea")} />
             </Row>
             <Row>
-              <Btn texto="Clientes" onClick={() => navigate('/Clientes')} />
+              <Btn texto="Artes Finalizadas" isActive={true} />
             </Row>
-            <Row>
-              <Btn texto="Artes Finalizadas" isActive={true}/>
+            {/* <Row>
+              <Btn texto="Solicitar Arte" onClick={handleShow} />
+            </Row> */}
+            <Row className="ButtonCredit">
+              <a
+                href="https://api.whatsapp.com/send?phone=5571997284970&text=Ol%C3%A1%20eu%20gostaria%20de%20solicitar%20cr%C3%A9ditos%20para%20a%20minha%20empresa"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Solicitar Créditos
+              </a>
             </Row>
           </div>
         </Col>
@@ -118,9 +151,6 @@ const ArteFinalizada = () => {
                     Nome da Arte
                   </Col>
                   <Col xs={3} lg={4}>
-                    Cliente
-                  </Col>
-                  <Col xs={3} lg={4}>
                     Data
                   </Col>
                 </Row>
@@ -136,16 +166,26 @@ const ArteFinalizada = () => {
                         {item?.nomeArte}
                       </Col>
                       <Col xs={3} lg={4}>
-                        {item?.cliente}
-                      </Col>
-                      <Col xs={3} lg={2}>
                         <span>{item?.date.toDate().toLocaleString()}</span>
                       </Col>
                       <Col xs={3} lg={2}>
-                       
-                      <Button onClick={() => navigate(`/pagina-detalhes/${item.nomeArte}`)}>Ver</Button>
-
-
+                        <Button
+                          variant="warning"
+                          onClick={() =>
+                            navigate(`/alterar-arte/${item.nomeArte}`)
+                          }
+                        >
+                          Alterar
+                        </Button>
+                      </Col>
+                      <Col xs={3} lg={2} className="anexo">
+                        <a
+                          href={item?.arquivoFinalUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          Anexo
+                        </a>
                       </Col>
                     </Row>
                   </div>
@@ -159,4 +199,4 @@ const ArteFinalizada = () => {
   );
 };
 
-export default ArteFinalizada;
+export default UserArteFinalizada;

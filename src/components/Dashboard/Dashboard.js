@@ -27,8 +27,9 @@ const Dashboard = () => {
   const [user, setUser] = useState(null);
   const [userData, setUserData] = useState(null);
 
-  //para pegar o historico das artes solicitadas
-  const [historico, setHistorico] = useState([]);
+  //para buscar pelo nome do cliente
+  const [searchTerm, setSearchTerm] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
 
   //Para trabalhar com o upload do arquivo
   const storage = getStorage(app);
@@ -125,6 +126,7 @@ const Dashboard = () => {
           nomeArte: nomeArte,
           briefing: briefing,
           arquivoUrl: fileUrl,
+          arquivoFinalUrl: '',
           date: new Date(),
           status: "Solicitado",
           cliente: userName,
@@ -163,7 +165,17 @@ const Dashboard = () => {
             historicoData.push(doc.data());
           });
 
-          setHistorico(historicoData);
+           //para filtrar com base na busca
+           const filteredResults = historicoData.filter((userData) =>
+           userData.nomeArte.toLowerCase().includes(searchTerm.toLowerCase())
+         );
+
+         setSearchResults(filteredResults);
+
+         // Limpa os resultados ao limpar o termo de busca
+         if (!searchTerm) {
+          setSearchResults(historicoData);
+        }
         } catch (error) {
           console.error("Erro ao buscar histórico no Firestore:", error);
         }
@@ -188,7 +200,7 @@ const Dashboard = () => {
     return () => unsubscribe();
 
     // eslint-disable-next-line
-  }, [navigate]);
+  }, [navigate, searchTerm]);
 
   useEffect(() => {
     if (userData?.credit < 1) {
@@ -215,7 +227,7 @@ const Dashboard = () => {
               <Btn texto="Dashboard" isActive={true} />
             </Row>
             <Row>
-              <Btn texto="Artes Finalizadas" />
+              <Btn texto="Artes Finalizadas" onClick={() => navigate('/UserArteFinalizada')} />
             </Row>
             <Row>
               <Btn texto="Solicitar Arte" onClick={handleShow} />
@@ -235,9 +247,15 @@ const Dashboard = () => {
         <Col xs={12} lg={9}>
           <Row>
             <div className="searchDiv mb-3">
-              <Form>
+              {/* input de de busca */}
+              <Form onSubmit={(e) => e.preventDefault()}>
                 <Form.Group controlId="Search">
-                  <Form.Control type="text" placeholder="Buscar artes" />
+                  <Form.Control
+                    type="text"
+                    placeholder="Buscar clientes"
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                  />
                 </Form.Group>
               </Form>
             </div>
@@ -270,7 +288,7 @@ const Dashboard = () => {
                   <hr></hr>
                 </Row>
 
-                {historico.map((item, index) => (
+                {searchResults.map((item, index) => (
                   <div key={index}>
                     <Row className="smallFont py-2">
                       <Col xs={6} lg={8}>
@@ -339,6 +357,7 @@ const Dashboard = () => {
             novas artes, por favor entre em contato para obter novos créditos.
           </p>
         </Modal.Body>
+        
         <Modal.Footer>
           <Button variant="secondary" onClick={handleCreditClose}>
             Cancelar

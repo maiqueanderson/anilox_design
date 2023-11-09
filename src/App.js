@@ -18,6 +18,8 @@ import Clientes from './components/AdmDashboard/Clientes';
 import UserTerms from './components/UserTerms/UserTerms';
 import ArteFinalizada from './components/AdmDashboard/ArteFinalizada';
 import ClienteDetalhe from './components/AdmDashboard/ClienteDetalhe';
+import UserArteFinalizada from './components/Dashboard/UserArteFinalizada';
+import ArteChanger from './components/Dashboard/ArteChanger';
 
 
 
@@ -39,8 +41,10 @@ function App() {
         <Route path='/Clientes' element={<Clientes/>}></Route>
         <Route path='/UserTerms' element={<UserTerms/>}></Route>
         <Route path='/ArteFinalizada' element={<ArteFinalizada/>}></Route>
+        <Route path='/UserArteFinalizada' element={<UserArteFinalizada/>}></Route>
         <Route path='/pagina-detalhes/:nomeArte' element={<DetalhesArte />} /> 
         <Route path='/cliente-detalhe/:nomeCliente' element={<ClienteDetalhe />} /> 
+        <Route path='/alterar-arte/:nomeArte' element={<ArteChanger />} /> 
         
 
       </Routes>

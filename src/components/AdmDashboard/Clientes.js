@@ -17,6 +17,10 @@ const Clientes = () => {
   const [cliente, setCliente] = useState(null);
   const navigate = useNavigate();
 
+  //para buscar pelo nome do cliente
+  const [searchTerm, setSearchTerm] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
+
   const [show, setShow] = useState(false);
   const handleClose = () => {
     window.location.reload();
@@ -24,9 +28,6 @@ const Clientes = () => {
   const handleShow = () => {
     setShow(true);
   };
-
-  //para pegar o historico dos clientes
-  const [historico, setHistorico] = useState([]);
 
   //Para deletar um cliente
   const handleDeleteClient = async (clientId, clienteName) => {
@@ -56,7 +57,17 @@ const Clientes = () => {
             historicoData.push(doc.data());
           });
 
-          setHistorico(historicoData);
+          //para filtrar com base na busca
+          const filteredResults = historicoData.filter((item) =>
+            item.name.toLowerCase().includes(searchTerm.toLowerCase())
+          );
+
+          setSearchResults(filteredResults);
+
+          // Limpa os resultados ao limpar o termo de busca
+          if (!searchTerm) {
+            setSearchResults(historicoData);
+          }
         } catch (error) {
           console.error("Erro ao buscar histórico no Firestore:", error);
         }
@@ -66,7 +77,7 @@ const Clientes = () => {
     });
 
     return () => unsubscribe();
-  }, [navigate]);
+  }, [navigate, searchTerm]);
 
   if (!user) {
     return <div>Verificando a autenticação...</div>;
@@ -101,9 +112,15 @@ const Clientes = () => {
         <Col xs={12} lg={9}>
           <Row>
             <div className="searchDiv mb-3">
-              <Form>
+            {/* input de de busca */}
+              <Form onSubmit={(e) => e.preventDefault()}>
                 <Form.Group controlId="Search">
-                  <Form.Control type="text" placeholder="Buscar clientes" />
+                  <Form.Control
+                    type="text"
+                    placeholder="Buscar clientes"
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                  />
                 </Form.Group>
               </Form>
             </div>
@@ -133,7 +150,8 @@ const Clientes = () => {
                   <hr></hr>
                 </Row>
 
-                {historico.map((item, index) => (
+                {/* renderiza em tela a busca do usuario */}
+                {searchResults.map((item, index) => (
                   <div key={index}>
                     <Row className="smallFont py-2">
                       <Col xs={4} lg={4}>
@@ -155,7 +173,6 @@ const Clientes = () => {
                           />
                         </Link>
                       </Col>
-
                       <Col xs={2} lg={2}>
                         <Button
                           onClick={() =>

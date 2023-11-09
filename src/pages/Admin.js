@@ -17,8 +17,10 @@ const Admin = () => {
   const navigate = useNavigate();
 
 
-  //para pegar o historico das artes solicitadas
-  const [historico, setHistorico] = useState([]);
+  //para buscar pelo nome do cliente
+  const [searchTerm, setSearchTerm] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
+
 
   useEffect(() => {
     const auth = getAuth(app);
@@ -32,7 +34,8 @@ const Admin = () => {
           const querySnapshot = await getDocs(
             query(
               collectionRef,
-              where("status", "==", "Solicitado" || "Alteração")
+             
+              where("status", "in", ["Solicitado", "Alteração"])
             )
           );
 
@@ -41,7 +44,14 @@ const Admin = () => {
             historicoData.push(doc.data());
           });
 
-          setHistorico(historicoData);
+          const filteredResults = historicoData.filter((item) =>
+            item.nomeArte.toLowerCase().includes(searchTerm.toLowerCase())
+          );
+          setSearchResults(filteredResults);
+           // Limpa os resultados ao limpar o termo de busca
+           if (!searchTerm) {
+            setSearchResults(historicoData);
+          }
         } catch (error) {
           console.error("Erro ao buscar histórico no Firestore:", error);
         }
@@ -51,7 +61,7 @@ const Admin = () => {
     });
 
     return () => unsubscribe();
-  }, [navigate]);
+  }, [navigate, searchTerm]);
 
   if (!user) {
     return <div>Verificando a autenticação...</div>;
@@ -79,9 +89,14 @@ const Admin = () => {
         <Col xs={12} lg={9}>
           <Row>
             <div className="searchDiv mb-3">
-              <Form>
+            <Form onSubmit={(e) => e.preventDefault()}>
                 <Form.Group controlId="Search">
-                  <Form.Control type="text" placeholder="Buscar artes" />
+                  <Form.Control
+                    type="text"
+                    placeholder="Buscar clientes"
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                  />
                 </Form.Group>
               </Form>
             </div>
@@ -114,7 +129,7 @@ const Admin = () => {
                   <hr></hr>
                 </Row>
 
-                {historico.map((item, index) => (
+                {searchResults.map((item, index) => (
                   <div key={index}>
                     <Row className="smallFont py-2">
                       <Col xs={3} lg={4}>
