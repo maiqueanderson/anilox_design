@@ -1,0 +1,30 @@
+.textInput{
+    width: 350px;
+    margin: 10px 0;
+    @media screen and (min-width: 992px) {
+        width: 450px;
+        
+        } 
+        
+}
+
+.textArea{
+    height: 200px;
+    margin-bottom: 15px;
+}
+
+.button{
+    background-color: #71619d;
+    color: #fff;
+    text-decoration: none;
+    border-color: black;
+    border-radius: 5px;
+    width: 100px;
+    height: 30px;
+    margin-bottom: 20px;
+    
+}
+
+.button:hover{
+    background-color: #313030;
+}

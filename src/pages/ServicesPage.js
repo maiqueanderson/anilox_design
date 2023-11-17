@@ -11,7 +11,7 @@ import {
   faGem,
   faPenNib,
 } from "@fortawesome/free-solid-svg-icons";
-import Faq from "../components/Faq";
+import Faq from "../components/Faq/Faq";
 
 const ServicesPage = () => {
   return (

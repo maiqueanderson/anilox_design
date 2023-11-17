@@ -2,14 +2,14 @@ import React from "react";
 import { Col, Row, Image } from "react-bootstrap";
 
 import './portfolio.css'
-import cheiro from '../assets/cheiro-de-pizza-100.jpg';
-import raizes from '../assets/raizes-do-campo-100.jpg';
-import mariaPizza from '../assets/marias-pizza-100.jpg';
-import tortareli from '../assets/tortarelli-100.jpg';
-import nalaje from '../assets/nalaje-100.jpg';
-import lenoxx from '../assets/lenoxx-100.jpg';
-import meninasBolo from '../assets/bolo-das-meninas-100.jpg';
-import vivoPizza from '../assets/caixa-de-pizza-vivo-100.jpg';
+import cheiro from '../../assets/cheiro-de-pizza-100.jpg';
+import raizes from '../../assets/raizes-do-campo-100.jpg';
+import mariaPizza from '../../assets/marias-pizza-100.jpg';
+import tortareli from '../../assets/tortarelli-100.jpg';
+import nalaje from '../../assets/nalaje-100.jpg';
+import lenoxx from '../../assets/lenoxx-100.jpg';
+import meninasBolo from '../../assets/bolo-das-meninas-100.jpg';
+import vivoPizza from '../../assets/caixa-de-pizza-vivo-100.jpg';
 
 
 const Portfolio = () =>{

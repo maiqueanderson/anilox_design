@@ -4,7 +4,7 @@ import { Col, Container, Form, Row } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import { useNavigate } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
-import Btn from "../Btn";
+import Btn from "../Btn/Btn";
 import { app } from "../../database/firebaseconfig";
 
 import UserCreate from "../AdmDashboard/UserCreate";

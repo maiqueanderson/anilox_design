@@ -1,11 +1,23 @@
-import React from "react";
+import {React,  useState} from "react";
 import { Col, Container, Row, Image } from "react-bootstrap";
+import Modal from "react-bootstrap/Modal";
 
 import imageClient from "../../assets/client_happy.jpg";
-import Btn from "../Btn";
+import Btn from "../Btn/Btn";
+import ContactForm from "../Contact/ContactForm";
 import "./Client.css";
 
 const Client = () => {
+
+    //configurações para o modal de contato
+    const [show, setShow] = useState(false);
+    const handleClose = () => {
+      setShow(false);
+    };
+    const handleShow = () => {
+      setShow(true);
+    };
+
   return (
     <Container>
       <Row>
@@ -29,11 +41,21 @@ const Client = () => {
               são nossa prioridade.
             </p>
 
-            <Btn texto='Vamos Conversar?'/>
+            <Btn texto='Vamos Conversar?' onClick={handleShow}/>
            
           </div>
         </Col>
       </Row>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Seu futuro começa agora!</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <ContactForm/>
+        </Modal.Body>
+       
+      </Modal>
+
     </Container>
   );
 };

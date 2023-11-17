@@ -64,6 +64,8 @@ const ClienteDetalhe = () => {
   useEffect(() => {
     //aqui é para verificar se o ADM está logado
     const auth = getAuth(app);
+  
+
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (user && user.uid === "alZxv5w95fNAxRBeDoKUjT3nUjp1") {
         setUser(user);

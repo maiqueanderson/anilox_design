@@ -18,7 +18,7 @@ import { Button, Col, Container, Form, Row } from "react-bootstrap";
 
 import Modal from "react-bootstrap/Modal";
 
-import Btn from "../../components/Btn";
+import Btn from "../Btn/Btn";
 
 import "./Dashboard.css";
 

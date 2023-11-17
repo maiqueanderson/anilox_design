@@ -7,7 +7,7 @@ import { collection, doc, setDoc } from "firebase/firestore";
 import { Link, useNavigate } from "react-router-dom";
 import { app, db } from "../../database/firebaseconfig"
 import { Container, Form } from "react-bootstrap";
-import Btn from "../Btn";
+import Btn from "../Btn/Btn";
 
 const UserCreate = () => {
   const navigate = useNavigate();

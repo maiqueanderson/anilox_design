@@ -1,15 +1,28 @@
-import React from "react";
+import {React,  useState} from "react";
 import {  Col, Container, Row } from "react-bootstrap";
+import Modal from "react-bootstrap/Modal";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Btn from "../Btn";
+import Btn from "../Btn/Btn";
+import ContactForm from "../Contact/ContactForm";
 import { faArrowsRotate, faBox, faCalendarAlt, faCloud, faFileExport, faLightbulb, faObjectUngroup, faPenRuler, faTachographDigital } from '@fortawesome/free-solid-svg-icons'
-import './services.css';
+import './services.css'
 
 const Services = () => {
+
+    //configurações para o modal de contato
+    const [show, setShow] = useState(false);
+    const handleClose = () => {
+      setShow(false);
+    };
+    const handleShow = () => {
+      setShow(true);
+    };
+
   return (
     <Container>
       <Row>
         <Col className="my-5 py-5">
+        <h2 hidden>Com a Anilox Design sua empresa tem muito mais vantagens</h2>
           <Row className="services_text">Com a Anilox Design</Row>
 
           <Row className="services_text">sua empresa tem</Row>
@@ -17,7 +30,7 @@ const Services = () => {
           <Row className="services_text_under">MUITO MAIS VANTAGENS</Row>
 
           <Row className="mx-sm-0 mx-3">
-          <Btn texto='Faça um Orçamento'/>
+          <Btn texto='Faça um Orçamento' onClick={handleShow}/>
           </Row>
         </Col>
         
@@ -92,6 +105,17 @@ const Services = () => {
           </Row>
         </Col>
       </Row>
+
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Seu futuro começa agora!</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <ContactForm/>
+        </Modal.Body>
+       
+      </Modal>
+
     </Container>
   );
 };

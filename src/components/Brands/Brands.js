@@ -2,14 +2,14 @@ import React from "react";
 import { Col, Container, Row, Image } from "react-bootstrap";
 
 import "./Brands.css";
-import fabrica from "../assets/brands/fabricaDeCaixa.png";
-import nevada from "../assets/brands/nevada.png";
-import delinear from "../assets/brands/delinear.png";
-import ekobom from "../assets/brands/ekobom.png";
-import pastel from "../assets/brands/maispasteis.png";
-import induslab from "../assets/brands/induslab.png";
-import cheiro from "../assets/brands/cheiroDePizza.png";
-import flexo from "../assets/brands/flexoPremium.png";
+import fabrica from "../../assets/brands/fabricaDeCaixa.png";
+import nevada from "../../assets/brands/nevada.png";
+import delinear from "../../assets/brands/delinear.png";
+import ekobom from "../../assets/brands/ekobom.png";
+import pastel from "../../assets/brands/maispasteis.png";
+import induslab from "../../assets/brands/induslab.png";
+import cheiro from "../../assets/brands/cheiroDePizza.png";
+import flexo from "../../assets/brands/flexoPremium.png";
 
 const Brands = () => {
   return (

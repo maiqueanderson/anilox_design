@@ -9,7 +9,7 @@ import { collection, getDocs, query, where } from "firebase/firestore";
 
 
 import "../Dashboard/Dashboard.css";
-import Btn from "../Btn";
+import Btn from "../Btn/Btn";
 
 const ArteFinalizada = () => {
   const [user, setUser] = useState(null);

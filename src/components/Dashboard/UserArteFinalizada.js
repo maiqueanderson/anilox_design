@@ -13,7 +13,7 @@ import {
 } from "firebase/firestore";
 
 import "../Dashboard/Dashboard.css";
-import Btn from "../Btn";
+import Btn from "../Btn/Btn";
 
 const UserArteFinalizada = () => {
   const [user, setUser] = useState(null);

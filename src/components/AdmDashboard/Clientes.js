@@ -10,7 +10,7 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 
 import "../Dashboard/Dashboard.css";
-import Btn from "../Btn";
+import Btn from "../Btn/Btn";
 
 const Clientes = () => {
   const [user, setUser] = useState(null);

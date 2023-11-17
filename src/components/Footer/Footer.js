@@ -35,7 +35,11 @@ const Footer = () => {
           <h3>Contatos</h3>
           <h4>+55 71 99728-4970</h4>
           <h4>contato@aniloxdesign.com.br</h4>
-          <Button variant="light">Faça um Orçamento</Button>
+          <a href="https://wa.me/5571997284970" target="blank">
+
+          <Button variant="success">WhatsApp</Button>
+          </a>
+          
           </div>
           </Col>
         </Row>

@@ -10,7 +10,7 @@ import { collection, getDocs, query, where } from "firebase/firestore";
 
 
 import "../components/Dashboard/Dashboard.css";
-import Btn from "../components/Btn";
+import Btn from "../components/Btn/Btn";
 
 const Admin = () => {
   const [user, setUser] = useState(null);
