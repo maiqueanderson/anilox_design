@@ -25,7 +25,7 @@ Os usuários podem facilmente se cadastrar e fazer login para acessar nossos ser
 ### Dashboard do cliente:
 Oferecemos uma plataforma intuitiva onde os clientes podem solicitar novas artes, requisitar alterações, visualizar as artes solicitadas proporcionando uma comunicação direta e eficiente com nossa equipe.
 
-![dashboard](https://lh3.googleusercontent.com/pw/ADCreHeNO-J_xSgw67PUZHqFC0eJcNnkT79mhmgiNy9e57CTCb21hGbXjlj-HVp5bQQwljgSkeBUQHvzil7L1JP6rZePhO0Qm6dx37ntHCPwP9nTh8bNcxiI3zhATK4bsoz0cNm5D4GofiAQ1ppiJaCKj5TnxQ=w600-h330-s-no?authuser=0)
+![dashboard](https://lh3.googleusercontent.com/pw/ADCreHeHQxcdso3Ejo5G12ssok7UI5cJCe5k1LEZABG0quBIpIGut3OC9Mu8DuYifT0bDa8bI9ZQOdH_k0lFatHYDhT-jjTA1tDkBo18txVGckwlqEeKnFfS3IKJSeIwne1R05DNgYrKnpFsdYFveiK5iOsKpQ=w800-h440-s-no?authuser=0)
 
 ### Dashboard de Administração
 Facilitando a gestão, nosso site dispõe de uma área administrativa dedicada ao gerenciamento de clientes, oferecendo recursos como a adição e remoção de créditos para solicitações de artes. Além disso, nosso dashboard centraliza todas as artes requisitadas por cada cliente, proporcionando uma visão abrangente do progresso e simplificando a administração.
@@ -93,9 +93,21 @@ const getAdmUid = () => {
 export default getAdmUid;
 ```
 
+## Desenvolvido utilizando as tecnologias:
 
-## Feito com
+- [React](https://www.w3schools.com/REACT/DEFAULT.ASP) - Este site foi desenvolvido usando React, uma biblioteca JavaScript popular para a criação de interfaces de usuário dinâmicas e interativas.
+- [Firebase](https://firebase.google.com/docs/build?hl=pt-br) - O Firebase desempenhou um papel essencial neste projeto, atuando como o banco de dados central, fornecendo autenticação segura e permitindo o armazenamento de arquivos de forma eficiente.
+- [React Bootstrap](https://react-bootstrap.netlify.app/docs/getting-started/introduction) - O React Bootstrap foi fundamental para o design do front-end deste site. Utilizando componentes prontos e responsivos, o React Bootstrap agregou agilidade e consistência ao desenvolvimento, garantindo uma interface visual moderna e adaptável.
+- [React Router Dom](https://www.w3schools.com/react/react_router.asp) - O React Router DOM foi empregado para facilitar a navegação neste site. Com sua capacidade de criar rotas dinâmicas, o React Router DOM proporcionou uma experiência de usuário mais fluida, permitindo a transição entre diferentes páginas de forma eficiente e organizada.
+- [Font Awesome](https://fontawesome.com/docs) - O Font Awesome foi utilizado para aprimorar a experiência visual deste site. Com sua vasta biblioteca de ícones, o Font Awesome adicionou elementos visuais atraentes e personalizados, complementando o design e a usabilidade da interface.
 
 
+## Licença
+
+Este projeto está licenciado sob a Licença MIT - consulte o arquivo LICENSE para obter mais detalhes.
+
+---
+
+© [Anilox Design](https://aniloxdesign.com.br) | Criado por Máique Anderson
 
 
