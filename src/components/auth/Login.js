@@ -7,7 +7,7 @@ import Modal from "react-bootstrap/Modal";
 import Btn from "../Btn/Btn";
 import { app } from "../../database/firebaseconfig";
 
-import UserCreate from "../AdmDashboard/UserCreate";
+import UserCreate from "../auth/UserCreate";
 
 const Login = () => {
   const [email, setEmail] = useState("");

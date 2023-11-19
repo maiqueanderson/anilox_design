@@ -14,6 +14,7 @@ import { Button, Col, Container, Row, Form } from "react-bootstrap";
 import Modal from "react-bootstrap/Modal";
 
 import "./AdmDashboard.css";
+import Uid from "../auth/Uid";
 
 const ClienteDetalhe = () => {
   const navigate = useNavigate();
@@ -64,10 +65,11 @@ const ClienteDetalhe = () => {
   useEffect(() => {
     //aqui é para verificar se o ADM está logado
     const auth = getAuth(app);
-  
+     //pega UID do usuario do arquivo UID.js dentro de Auth
+     const admUid = Uid();
 
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
-      if (user && user.uid === "alZxv5w95fNAxRBeDoKUjT3nUjp1") {
+      if (user && user.uid === admUid) {
         setUser(user);
 
         console.log(nomeCliente);

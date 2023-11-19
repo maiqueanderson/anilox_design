@@ -10,6 +10,7 @@ import { collection, getDocs, query, where } from "firebase/firestore";
 
 import "../Dashboard/Dashboard.css";
 import Btn from "../Btn/Btn";
+import Uid from "../auth/Uid";
 
 const ArteFinalizada = () => {
   const [user, setUser] = useState(null);
@@ -21,9 +22,10 @@ const ArteFinalizada = () => {
 
   useEffect(() => {
     const auth = getAuth(app);
-
+    //pega UID do usuario do arquivo UID.js dentro de Auth
+    const admUid = Uid();
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
-      if (user && user.uid === "alZxv5w95fNAxRBeDoKUjT3nUjp1") {
+      if (user && user.uid === admUid) {
         setUser(user);
 
         try {

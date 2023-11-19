@@ -25,7 +25,9 @@ const Admin = () => {
 
   useEffect(() => {
     const auth = getAuth(app);
+    //pega UID do usuario do arquivo UID.js dentro de Auth
     const admUid = Uid();
+    
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (user && user.uid === admUid) {
         setUser(user);

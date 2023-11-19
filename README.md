@@ -72,7 +72,27 @@ const firebaseConfig = {
   };
 ```
 
-Para começar, clique em 'Área do Usuário' e crie um novo usuario que será o ADM, preenchendo todos os campos. Após isso, você será redirecionado para a página de clientes. No Firebase, dentro da coleção 'users', localize o UID do usuário recém-criado e copie-o. Em seguida, crie um arquivo .env na raiz do projeto com o seguinte código: 
+Para começar, clique em 'Área do Usuário' e crie um novo usuario que será o ADM, preenchendo todos os campos corretamente. Após isso, você será redirecionado para a página de clientes.
+
+No Firebase, dentro da coleção 'users', localize o UID do usuário recém-criado e copie-o. Em seguida, crie um arquivo Uid.js no seguinte diretorio:
+
+```bash
+src/components/auth/Uid.js
+```
+
+Dentro desse Arquivo Uid.js cole o seguinte código e faça a subistituição para o UID do ADM que você tinha copiado antes:
+
+
+```yaml
+const AdmUid = "COLOQUE_AQUI_UID_DO_ADM";
+
+const getAdmUid = () => {
+  return AdmUid;
+};
+
+export default getAdmUid;
+```
+
 
 ## Feito com
 
