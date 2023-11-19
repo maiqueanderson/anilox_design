@@ -21,3 +21,7 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Ignorar arquivo AdmUid.js dentro do diretório src/components/auth
+src/components/auth/Uid.js
+

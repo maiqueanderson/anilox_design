@@ -2,6 +2,7 @@
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
+import Uid from "../components/auth/Uid";
 
 import { app, db } from "../database/firebaseconfig";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
@@ -24,9 +25,9 @@ const Admin = () => {
 
   useEffect(() => {
     const auth = getAuth(app);
-
+    const admUid = Uid();
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
-      if (user && user.uid === "alZxv5w95fNAxRBeDoKUjT3nUjp1") {
+      if (user && user.uid === admUid) {
         setUser(user);
 
         try {
