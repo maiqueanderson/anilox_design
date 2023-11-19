@@ -1,70 +1,81 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# ![Anilox Design](https://lh3.googleusercontent.com/pw/ADCreHcB68b9EuGMxZBr-BMev_KThPbgYqWFfLRvoKaOcr3OJKMAV0Wm7AX0zJRrqcKQyRq78EBrQCGgV1puu4eCs4fYWJLvhCrLaMS4dgfbJH5G9_2yBQ_iiBwLEp1SVcvYft88_-CqjivXsIDvSbqfAMN6mw=w3242-h1774-s-no?authuser=0)
+# Anilox Design
+<table>
+<tr>
+<td>
+O site da Anilox Design oferece um sistema completo que permite aos usuários se cadastrarem e fazerem login para solicitar novas artes, requisitar alterações e visualizar as artes solicitadas. Além disso, apresenta uma página administrativa que possibilita o gerenciamento dos clientes, incluindo funções como exclusão e adição de créditos para solicitações de artes. Conta também com um dashboard que centraliza todas as artes requisitadas por clientes, oferecendo facilidades para seu gerenciamento. Este é um portal completo não apenas para atender às demandas atuais, mas também para atrair novos clientes.
+</td>
+</tr>
+</table>
 
-## Available Scripts
 
-In the project directory, you can run:
+## Demo
+Aqui está um link com o a demonstração do site :  https://aniloxdesign.com.br
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## O que oferecemos
+Combinamos expertise técnica com criatividade para oferecer um serviço de design flexográfico excepcional. Nosso site proporciona uma experiência interativa e simplificada para nossos clientes:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Cadastro e Login:
+Os usuários podem facilmente se cadastrar e fazer login para acessar nossos serviços personalizados.
 
-### `npm test`
+![](https://lh3.googleusercontent.com/pw/ADCreHd3iSk4KGDWQ5ATyK92V0JFKpKJJ_3j_4R2wjc99UOunsShHWi2g44I7BJKGrc4qcNy6tB1nynUXp2bFjCu3y6_3r2CQi0frsW2k61DUfn0zBmXnvDm5LypdguO5Ci25HOi8nKRiKokNBmhRrY4_Z1HQg=w3262-h1766-s-no?authuser=0)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Dashboard do cliente:
+Oferecemos uma plataforma intuitiva onde os clientes podem solicitar novas artes, requisitar alterações, visualizar as artes solicitadas proporcionando uma comunicação direta e eficiente com nossa equipe.
 
-### `npm run build`
+![dashboard](https://lh3.googleusercontent.com/pw/ADCreHeNO-J_xSgw67PUZHqFC0eJcNnkT79mhmgiNy9e57CTCb21hGbXjlj-HVp5bQQwljgSkeBUQHvzil7L1JP6rZePhO0Qm6dx37ntHCPwP9nTh8bNcxiI3zhATK4bsoz0cNm5D4GofiAQ1ppiJaCKj5TnxQ=w600-h330-s-no?authuser=0)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Dashboard de Administração
+Facilitando a gestão, nosso site dispõe de uma área administrativa dedicada ao gerenciamento de clientes, oferecendo recursos como a adição e remoção de créditos para solicitações de artes. Além disso, nosso dashboard centraliza todas as artes requisitadas por cada cliente, proporcionando uma visão abrangente do progresso e simplificando a administração.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![dashboardADM](https://lh3.googleusercontent.com/pw/ADCreHe4izi8XvenIY1JCX3v0vSdxnquCCvYZulgQFUCXcK-2tpr58bOcMPABhUYNUMDGItWQPwUlPgRP-R5tNdf8ZYZk60zx-GiCX2Xp715ySuhxZ_sABrv9GCA0wzWfd8FdmepJBDqM10esiafEYk3KJ4NOQ=w800-h440-s-no?authuser=0)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+## Site Responsivo
+Nossa plataforma foi cuidadosamente desenvolvida para ser totalmente responsiva, adaptando-se perfeitamente a todos os tamanhos de tela, incluindo dispositivos móveis. Isso significa que você terá uma experiência consistente e intuitiva, seja navegando em um desktop, tablet ou smartphone.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+![](https://lh3.googleusercontent.com/pw/ADCreHepCi2RbXVP8pTp0nc67QaNRvtpdfdRuR70tizpNwHLReD1oIX5ZiNWSfNKeVSN9SiKoOcRJXa2TGirehw3ieOrfiCCrJK9kfZSVfq-Sl0YzVRG58Dnn-3Pp3gVQOefk94ueVyHpidz22hGMIuyDOMOmg=w1920-h1600-s-no?authuser=0)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+## Como Usar
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Para clonar e executar esta aplicação, você precisará ter o Git e o Node.js (que vem com o npm) instalados no seu computador. A partir da linha de comando:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+# Clone este repositório
+$ git clone https://github.com/maiqueanderson/anilox_design.git
 
-### Code Splitting
+# Vá para o repositório
+$ cd anilox_design
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+# Instalar dependências
+$ npm install
 
-### Analyzing the Bundle Size
+# Inicizlizar o site
+$ npm rum start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Além disso, será necessário criar um projeto no Firebase e vinculá-lo ao código do site na pasta src/database/firebaseconfig.js, seguindo estas etapas:
 
-### Making a Progressive Web App
+```yaml
+const firebaseConfig = {
+  apiKey: "COLOQUE_AQUI_API_KEY",
+  authDomain: "COLOQUE_AQUI_AUT_DOMAIN",
+  projectId: "COLOQUE_AQUI_PROJECT_ID",
+  storageBucket: "COLOQUE_AQUI_STORAGE_BUCKET",
+  messagingSenderId: "COLOQUE_AQUI_SENDER_ID",
+  appId: "COLOQUE_AQUI_APP_ID"
+  };
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Para começar, clique em 'Área do Usuário' e crie um novo usuario que será o ADM, preenchendo todos os campos. Após isso, você será redirecionado para a página de clientes. No Firebase, dentro da coleção 'users', localize o UID do usuário recém-criado e copie-o. Em seguida, crie um arquivo .env na raiz do projeto com o seguinte código: 
 
-### Advanced Configuration
+## Feito com
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
