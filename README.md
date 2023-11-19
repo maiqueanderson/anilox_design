@@ -93,6 +93,16 @@ const getAdmUid = () => {
 export default getAdmUid;
 ```
 
+## Acesso à Página de Administração
+
+Após seguir corretamente os passos anteriores, você terá acesso à página de administração. Basta acessar o link:
+
+```bash
+localhost:3000/AdmLogin
+```
+
+Utilize o e-mail e senha do usuário que você criou para acessar o painel de controle administrativo.
+
 ## Desenvolvido utilizando as tecnologias:
 
 - [React](https://www.w3schools.com/REACT/DEFAULT.ASP) - Este site foi desenvolvido usando React, uma biblioteca JavaScript popular para a criação de interfaces de usuário dinâmicas e interativas.
