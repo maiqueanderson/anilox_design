@@ -2,12 +2,12 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from 'firebase/firestore';
 
 const firebaseConfig = {
-  apiKey: "COLOQUE_AQUI_API_KEY",
-  authDomain: "COLOQUE_AQUI_AUT_DOMAIN",
-  projectId: "COLOQUE_AQUI_PROJECT_ID",
-  storageBucket: "COLOQUE_AQUI_STORAGE_BUCKET",
-  messagingSenderId: "COLOQUE_AQUI_SENDER_ID",
-  appId: "COLOQUE_AQUI_APP_ID"
+  apiKey: "AIzaSyBdDyw6_ORaGloKMWfQruT7NU8BmnzgCUY",
+  authDomain: "aniloxdesign3.firebaseapp.com",
+  projectId: "aniloxdesign3",
+  storageBucket: "aniloxdesign3.appspot.com",
+  messagingSenderId: "549455333949",
+  appId: "1:549455333949:web:a726136fd60cd769ab3854"
   };
   
 export const app = initializeApp(firebaseConfig);

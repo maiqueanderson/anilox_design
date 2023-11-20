@@ -58,8 +58,11 @@ $ npm install
 # Inicizlizar o site
 $ npm rum start
 ```
+Este projeto utiliza a funcionalidade de autenticação do Firebase para permitir a criação de usuários através do método de autenticação por e-mail e senha. Para habilitar essa funcionalidade no seu próprio projeto Firebase, siga os passos para ativar a autenticação por e-mail/senha.
 
-Além disso, será necessário criar um projeto no Firebase e vinculá-lo ao código do site na pasta src/database/firebaseconfig.js, seguindo estas etapas:
+O projeto utiliza o Cloud Firestore como banco de dados. Para configurar o Firestore no seu projeto Firebase, siga as instruções fornecidas e insira as credenciais no código conforme descrito abaixo:
+
+- Insira o objeto de configuração do Firebase que contém as chaves e identificadores no arquivo firebaseconfig.js que está no diretorio src/database/firebaseconfig.js
 
 ```yaml
 const firebaseConfig = {
@@ -72,16 +75,13 @@ const firebaseConfig = {
   };
 ```
 
-Para começar, clique em 'Área do Usuário' e crie um novo usuario que será o ADM, preenchendo todos os campos corretamente. Após isso, você será redirecionado para a página de clientes.
-
-No Firebase, dentro da coleção 'users', localize o UID do usuário recém-criado e copie-o. Em seguida, crie um arquivo Uid.js no seguinte diretorio:
+- Crie um arquivo com nome Uid.js no seguinte diretorio: 
 
 ```bash
 src/components/auth/Uid.js
 ```
 
-Dentro desse Arquivo Uid.js cole o seguinte código e faça a subistituição para o UID do ADM que você tinha copiado antes:
-
+- Dentro desse Arquivo Uid.js cole o código abaixo, salve o arquivo para poder iniciar o projeto com npm rum start
 
 ```yaml
 const AdmUid = "COLOQUE_AQUI_UID_DO_ADM";
@@ -92,6 +92,10 @@ const getAdmUid = () => {
 
 export default getAdmUid;
 ```
+
+- Após iniciar o projeto, vá para 'Área do Usuário' e crie um novo usuário que será designado como administrador. Preencha todos os campos de forma completa e precisa. Uma vez concluído, você será redirecionado para a página do usuário comum. Prossiga para o próximo passo.
+
+- Acesse o console do Firebase e na coleção 'users', encontre o UID do usuário que acabou de ser criado e faça uma cópia dele. Em seguida, vá para o arquivo recém-criado 'Uid.js' e substitua "COLOQUE_AQUI_UID_DO_ADM" pelo UID do usuário recém-criado. Esse usuário será designado como Administrador do site."
 
 ## Acesso à Página de Administração
 
