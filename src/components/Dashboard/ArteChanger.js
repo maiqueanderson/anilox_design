@@ -12,7 +12,6 @@ import {
 } from "firebase/firestore";
 import { Col, Container, Row, Form, Button } from 'react-bootstrap';
 import Modal from "react-bootstrap/Modal";
-
 import '../AdmDashboard/AdmDashboard.css';
 
 const ArteChanger = () => {
@@ -37,6 +36,11 @@ const ArteChanger = () => {
     navigate("/ClientArea");
    }
    const handleShow = () => setShow(true);
+
+   //para voltar ao dashboard
+   const handleBack = () =>{
+    navigate("/ClientArea");
+   }
   
 
   const handleAlteracao = async () =>{
@@ -112,9 +116,12 @@ const ArteChanger = () => {
 
     <div className='arte'>
     <Row>
-      <Col lg={10} xs={6}>
+      <Col lg={11} xs={8}>
       <h2>{arte[0].nomeArte}</h2>
       <p>Status: {arte[0].status}</p>
+      </Col>
+      <Col lg={1} xs={4}>
+        <Button variant="secondary" onClick={handleBack} >Voltar</Button>
       </Col>
     </Row>
      

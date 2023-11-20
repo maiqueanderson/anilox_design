@@ -38,3 +38,27 @@
     font-weight: 700;
     font-size: 20px;
 }
+
+
+
+  .ButtonMobile{
+    
+    display: flex;
+    width: 220px;
+    
+    @media screen and (max-width: 968px) {
+        display: grid;
+        grid-template-columns: repeat(3, 80px);
+        justify-content: center;
+        width: auto;
+      
+      } 
+  }
+
+  .TextMobile{
+
+    @media screen and (max-width: 968px) {
+        text-align: center;
+      
+      } 
+  }

@@ -21,6 +21,11 @@ const DetalhesArte = () => {
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
 
+  //para voltar ao dashboard
+  const handleBack = () => {
+    navigate("/Admin");
+  };
+
   //Configurações do Modal
   const [show, setShow] = useState(false);
   const handleClose = () => {
@@ -29,7 +34,7 @@ const DetalhesArte = () => {
   };
   const handleShow = () => setShow(true);
 
-   //Configurações do Modal de upload de arquivo
+  //Configurações do Modal de upload de arquivo
   const [showUpload, setShowUpload] = useState(false);
   const handleCloseUpload = () => {
     setShowUpload(false);
@@ -84,13 +89,13 @@ const DetalhesArte = () => {
         query(collectionRef, where("nomeArte", "==", nomeArte))
       );
 
-       // Para fazer o upload do arquivo para o Firebase Storage
-       const uid = user.uid;
-       const storageRef = ref(storage, `uploads/${uid}/${arquivo.name}`);
-       await uploadBytes(storageRef, arquivo);
+      // Para fazer o upload do arquivo para o Firebase Storage
+      const uid = user.uid;
+      const storageRef = ref(storage, `uploads/${uid}/${arquivo.name}`);
+      await uploadBytes(storageRef, arquivo);
 
-       //URL do arquivo após o upload
-       const fileUrl = await getDownloadURL(storageRef);
+      //URL do arquivo após o upload
+      const fileUrl = await getDownloadURL(storageRef);
 
       querySnapshot.forEach(async (doc) => {
         const documentRef = doc.ref;
@@ -101,18 +106,17 @@ const DetalhesArte = () => {
       });
 
       console.log("Arte iniciada com sucesso com sucesso");
-      setMessage('Arquivo enviado com sucesso!')
+      setMessage("Arquivo enviado com sucesso!");
     } catch (error) {
       console.log("Erro ao iniciar arte:", error);
     }
   };
 
-
   useEffect(() => {
     //aqui é para verificar se o ADM está logado
     const auth = getAuth(app);
-     //pega UID do usuario do arquivo UID.js dentro de Auth
-     const admUid = Uid();
+    //pega UID do usuario do arquivo UID.js dentro de Auth
+    const admUid = Uid();
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (user && user.uid === admUid) {
         setUser(user);
@@ -152,20 +156,27 @@ const DetalhesArte = () => {
     <Container className="py-5">
       <div className="arte">
         <Row>
-          <Col lg={10} xs={6}>
+          <Col className="TextMobile" lg={9}>
             <h2>{arte[0].cliente}</h2>
             <p>Status: {arte[0].status}</p>
           </Col>
 
-          <Col lg={1} xs={3}>
-            <Button variant="success" onClick={handleStatusAndamento}>
-              Iniciar
-            </Button>
-          </Col>
-          <Col lg={1} xs={3}>
-            <Button onClick={handleShowUpload}>
-              Enviar
-            </Button>
+          <Col lg={3}>
+            <div className="ButtonMobile">
+              <Col>
+                <Button variant="success" onClick={handleStatusAndamento}>
+                  Iniciar
+                </Button>
+              </Col>
+              <Col>
+                <Button onClick={handleShowUpload}>Enviar</Button>
+              </Col>
+              <Col>
+                <Button variant="secondary" onClick={handleBack}>
+                  Voltar
+                </Button>
+              </Col>
+            </div>
           </Col>
         </Row>
 
@@ -209,9 +220,10 @@ const DetalhesArte = () => {
         </Modal.Header>
         <Modal.Body>
           <p>
-            Insira o arquivo finalizado da arte: {arte[0].nomeArte} para ser enviado ao cliente: {arte[0].cliente}
+            Insira o arquivo finalizado da arte: {arte[0].nomeArte} para ser
+            enviado ao cliente: {arte[0].cliente}
           </p>
-          <hr/>
+          <hr />
           <Form.Control type="file" size="sm" onChange={handleFileUpload} />
           {message}
         </Modal.Body>
@@ -219,12 +231,9 @@ const DetalhesArte = () => {
           <Button variant="secondary" onClick={handleCloseUpload}>
             Cancelar
           </Button>
-          <Button onClick={handleUploadFirebase}>
-            Enviar
-          </Button>
+          <Button onClick={handleUploadFirebase}>Enviar</Button>
         </Modal.Footer>
       </Modal>
-
     </Container>
   );
 };

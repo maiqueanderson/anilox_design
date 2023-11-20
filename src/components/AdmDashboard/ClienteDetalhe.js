@@ -32,6 +32,11 @@ const ClienteDetalhe = () => {
     setNewCredit(value);
   };
 
+    //para voltar ao dashboard
+    const handleBack = () =>{
+      navigate("/Clientes");
+     }
+
   const { nomeCliente } = useParams();
   const [cliente, setCliente] = useState(null);
 
@@ -107,9 +112,12 @@ const ClienteDetalhe = () => {
     <Container className="py-5">
       <div className="arte">
         <Row>
-          <Col lg={10} xs={6}>
+          <Col lg={11} xs={6}>
             <h2>{cliente[0].name}</h2>
           </Col>
+          <Col lg={1} xs={4}>
+        <Button variant="secondary" onClick={handleBack} >Voltar</Button>
+      </Col>
         </Row>
 
         <hr />
