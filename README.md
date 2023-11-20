@@ -58,7 +58,12 @@ $ npm install
 # Inicizlizar o site
 $ npm rum start
 ```
+
+[Firebase Authentication Documentação](https://firebase.google.com/docs/firestore?hl=pt-br)
+
 Este projeto utiliza a funcionalidade de autenticação do Firebase para permitir a criação de usuários através do método de autenticação por e-mail e senha. Para habilitar essa funcionalidade no seu próprio projeto Firebase, siga os passos para ativar a autenticação por e-mail/senha.
+
+[Cloud Firestore Documentação](https://firebase.google.com/docs/firestore?hl=pt-br)
 
 O projeto utiliza o Cloud Firestore como banco de dados. Para configurar o Firestore no seu projeto Firebase, siga as instruções fornecidas e insira as credenciais no código conforme descrito abaixo:
 
