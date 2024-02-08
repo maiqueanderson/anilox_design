@@ -1,5 +1,5 @@
 
-# ![Anilox Design](https://lh3.googleusercontent.com/pw/ADCreHcB68b9EuGMxZBr-BMev_KThPbgYqWFfLRvoKaOcr3OJKMAV0Wm7AX0zJRrqcKQyRq78EBrQCGgV1puu4eCs4fYWJLvhCrLaMS4dgfbJH5G9_2yBQ_iiBwLEp1SVcvYft88_-CqjivXsIDvSbqfAMN6mw=w3242-h1774-s-no?authuser=0)
+# ![Anilox Design](https://lh3.googleusercontent.com/pw/ABLVV84J309X3DRLYFbwpfEuHHHzxblI__7vPIvb7Yp3eRvzcDp3xF3w1lLQExuq7eJAAZXtovaTiUva4TDwR-bt_D0W2EHu4CnS7boPUEoQsgtDo0tVt3Oc6yHINTnvC4uryZpnd4KQTe0QQe8KrTNLJZoxLA=w3224-h1606-s-no?authuser=0)
 # Anilox Design
 <table>
 <tr>
