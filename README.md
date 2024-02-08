@@ -25,7 +25,7 @@ Os usuários podem facilmente se cadastrar e fazer login para acessar nossos ser
 ### Dashboard do cliente:
 Oferecemos uma plataforma intuitiva onde os clientes podem solicitar novas artes, requisitar alterações, visualizar as artes solicitadas proporcionando uma comunicação direta e eficiente com nossa equipe.
 
-![dashboard]([https://lh3.googleusercontent.com/pw/ABLVV85hJ5-LuzpHVk4Gch78ayEH-6PG1Mi9dlWX23btPcurflSOCL2sLk1lqIquEOV5WgG7omvZg2Vc1dgBns7V-3lUdHXKjCh5ad6d84zxhH0JVEmL6bHHQO0zSL66Dh9mswZbFNKQKr-xYdd-5BH29aRjnA=w1152-h648-s-no?authuser=0](https://lh3.googleusercontent.com/pw/ABLVV84J309X3DRLYFbwpfEuHHHzxblI__7vPIvb7Yp3eRvzcDp3xF3w1lLQExuq7eJAAZXtovaTiUva4TDwR-bt_D0W2EHu4CnS7boPUEoQsgtDo0tVt3Oc6yHINTnvC4uryZpnd4KQTe0QQe8KrTNLJZoxLA=w3224-h1606-s-no?authuser=0))
+![dashboard](https://lh3.googleusercontent.com/pw/ABLVV84J309X3DRLYFbwpfEuHHHzxblI__7vPIvb7Yp3eRvzcDp3xF3w1lLQExuq7eJAAZXtovaTiUva4TDwR-bt_D0W2EHu4CnS7boPUEoQsgtDo0tVt3Oc6yHINTnvC4uryZpnd4KQTe0QQe8KrTNLJZoxLA=w3224-h1606-s-no?authuser=0)
 
 ### Dashboard de Administração
 Facilitando a gestão, nosso site dispõe de uma área administrativa dedicada ao gerenciamento de clientes, oferecendo recursos como a adição e remoção de créditos para solicitações de artes. Além disso, nosso dashboard centraliza todas as artes requisitadas por cada cliente, proporcionando uma visão abrangente do progresso e simplificando a administração.
