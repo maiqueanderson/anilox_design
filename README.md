@@ -30,7 +30,7 @@ Oferecemos uma plataforma intuitiva onde os clientes podem solicitar novas artes
 ### Dashboard de Administração
 Facilitando a gestão, nosso site dispõe de uma área administrativa dedicada ao gerenciamento de clientes, oferecendo recursos como a adição e remoção de créditos para solicitações de artes. Além disso, nosso dashboard centraliza todas as artes requisitadas por cada cliente, proporcionando uma visão abrangente do progresso e simplificando a administração.
 
-![dashboardADM](https://github.com/maiqueanderson/anilox_design/blob/main/src/assets/dashboard.gif?raw=true)
+![dashboardADM](https://github.com/maiqueanderson/anilox_design/blob/main/src/assets/admDashboard.gif?raw=true)
 
 
 ## Site Responsivo
