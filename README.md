@@ -20,7 +20,7 @@ Combinamos expertise técnica com criatividade para oferecer um serviço de desi
 ### Cadastro e Login:
 Os usuários podem facilmente se cadastrar e fazer login para acessar nossos serviços personalizados.
 
-![](https://lh3.googleusercontent.com/pw/ADCreHd3iSk4KGDWQ5ATyK92V0JFKpKJJ_3j_4R2wjc99UOunsShHWi2g44I7BJKGrc4qcNy6tB1nynUXp2bFjCu3y6_3r2CQi0frsW2k61DUfn0zBmXnvDm5LypdguO5Ci25HOi8nKRiKokNBmhRrY4_Z1HQg=w3262-h1766-s-no?authuser=0)
+![](https://lh3.googleusercontent.com/pw/ABLVV85hJ5-LuzpHVk4Gch78ayEH-6PG1Mi9dlWX23btPcurflSOCL2sLk1lqIquEOV5WgG7omvZg2Vc1dgBns7V-3lUdHXKjCh5ad6d84zxhH0JVEmL6bHHQO0zSL66Dh9mswZbFNKQKr-xYdd-5BH29aRjnA=w1152-h648-s-no?authuser=0)
 
 ### Dashboard do cliente:
 Oferecemos uma plataforma intuitiva onde os clientes podem solicitar novas artes, requisitar alterações, visualizar as artes solicitadas proporcionando uma comunicação direta e eficiente com nossa equipe.
