@@ -25,12 +25,12 @@ Os usuários podem facilmente se cadastrar e fazer login para acessar nossos ser
 ### Dashboard do cliente:
 Oferecemos uma plataforma intuitiva onde os clientes podem solicitar novas artes, requisitar alterações, visualizar as artes solicitadas proporcionando uma comunicação direta e eficiente com nossa equipe.
 
-<img src="/assets/dashboard.gif">
+![dashboardADM](https://github.com/maiqueanderson/anilox_design/blob/main/src/assets/dashboard.gif?raw=true)
 
 ### Dashboard de Administração
 Facilitando a gestão, nosso site dispõe de uma área administrativa dedicada ao gerenciamento de clientes, oferecendo recursos como a adição e remoção de créditos para solicitações de artes. Além disso, nosso dashboard centraliza todas as artes requisitadas por cada cliente, proporcionando uma visão abrangente do progresso e simplificando a administração.
 
-![dashboardADM](https://lh3.googleusercontent.com/pw/ADCreHe4izi8XvenIY1JCX3v0vSdxnquCCvYZulgQFUCXcK-2tpr58bOcMPABhUYNUMDGItWQPwUlPgRP-R5tNdf8ZYZk60zx-GiCX2Xp715ySuhxZ_sABrv9GCA0wzWfd8FdmepJBDqM10esiafEYk3KJ4NOQ=w800-h440-s-no?authuser=0)
+![dashboardADM](https://github.com/maiqueanderson/anilox_design/blob/main/src/assets/dashboard.gif?raw=true)
 
 
 ## Site Responsivo
