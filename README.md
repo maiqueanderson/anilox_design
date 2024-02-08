@@ -36,7 +36,7 @@ Facilitando a gestão, nosso site dispõe de uma área administrativa dedicada a
 ## Site Responsivo
 Nossa plataforma foi cuidadosamente desenvolvida para ser totalmente responsiva, adaptando-se perfeitamente a todos os tamanhos de tela, incluindo dispositivos móveis. Isso significa que você terá uma experiência consistente e intuitiva, seja navegando em um desktop, tablet ou smartphone.
 
-![](https://lh3.googleusercontent.com/pw/ADCreHepCi2RbXVP8pTp0nc67QaNRvtpdfdRuR70tizpNwHLReD1oIX5ZiNWSfNKeVSN9SiKoOcRJXa2TGirehw3ieOrfiCCrJK9kfZSVfq-Sl0YzVRG58Dnn-3Pp3gVQOefk94ueVyHpidz22hGMIuyDOMOmg=w1920-h1600-s-no?authuser=0)
+![](https://github.com/maiqueanderson/anilox_design/blob/main/src/assets/responsivo.gif?raw=true)
 
 
 
