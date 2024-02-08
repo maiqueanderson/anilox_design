@@ -20,7 +20,7 @@ Combinamos expertise técnica com criatividade para oferecer um serviço de desi
 ### Cadastro e Login:
 Os usuários podem facilmente se cadastrar e fazer login para acessar nossos serviços personalizados.
 
-![](https://lh3.googleusercontent.com/pw/ABLVV85hJ5-LuzpHVk4Gch78ayEH-6PG1Mi9dlWX23btPcurflSOCL2sLk1lqIquEOV5WgG7omvZg2Vc1dgBns7V-3lUdHXKjCh5ad6d84zxhH0JVEmL6bHHQO0zSL66Dh9mswZbFNKQKr-xYdd-5BH29aRjnA=w1152-h648-s-no?authuser=0)
+![](https://github.com/maiqueanderson/anilox_design/blob/main/src/assets/cadastro.png?raw=true)
 
 ### Dashboard do cliente:
 Oferecemos uma plataforma intuitiva onde os clientes podem solicitar novas artes, requisitar alterações, visualizar as artes solicitadas proporcionando uma comunicação direta e eficiente com nossa equipe.
