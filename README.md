@@ -25,7 +25,7 @@ Os usuários podem facilmente se cadastrar e fazer login para acessar nossos ser
 ### Dashboard do cliente:
 Oferecemos uma plataforma intuitiva onde os clientes podem solicitar novas artes, requisitar alterações, visualizar as artes solicitadas proporcionando uma comunicação direta e eficiente com nossa equipe.
 
-![dashboard](https://ibb.co/3f0sZyF)
+<img src="/assets/dashboard.gif">
 
 ### Dashboard de Administração
 Facilitando a gestão, nosso site dispõe de uma área administrativa dedicada ao gerenciamento de clientes, oferecendo recursos como a adição e remoção de créditos para solicitações de artes. Além disso, nosso dashboard centraliza todas as artes requisitadas por cada cliente, proporcionando uma visão abrangente do progresso e simplificando a administração.
