@@ -100,7 +100,7 @@ const Login = () => {
 
       <Modal show={UserCreateModal} onHide={UserCreateClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Criar Usuario novo usuário</Modal.Title>
+          <Modal.Title>Criar novo usuário</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <UserCreate />
